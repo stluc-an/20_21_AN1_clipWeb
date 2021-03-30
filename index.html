@@ -15,15 +15,23 @@
 				let txt = await data.text();
 				let elems = JSON.parse(txt);
 				elems.map(elem=>{
-					let li = document.createElement("li");
-					let a = document.createElement("a");
+					
 					fetch("https://stluc-an.github.io/20_21_AN1_clipWeb/"+elem.path+"/README.txt")
 					.then(async (data)=>{
+						let li = document.createElement("li");
+						let clip = document.createElement("a");
+						let track = document.createElement("a");
+
 						let txt = await data.text();
-						console.log(txt);
-						a.innerText = elem.name;
-						a.href = elem.path;
-						li.appendChild(a);
+						let [artistname, trackname, link] = txt.split("\n");
+
+						track.innerText = artistname + " - " + trackname;
+						track.href = link;
+
+						clip.innerText = elem.name;
+						clip.href = elem.path;
+						li.appendChild(clip);
+						li.appendChild(track);
 						li.appendChild(iframe);
 						document.querySelector("ul").appendChild(li);
 					})
