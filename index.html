@@ -27,6 +27,7 @@
 						let [artistname, trackname, link] = txt.split("\n");
 
 						clip.innerText = elem.name;
+						clip.target = "_blank";
 						clip.href = elem.path;
 						li.appendChild(clip);
 						
@@ -34,6 +35,7 @@
 						li.appendChild(splitter);
 
 						track.innerText = artistname + " - " + trackname;
+						track.target = "_blank";
 						track.href = link;
 						li.appendChild(track);						
 						
