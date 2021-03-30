@@ -17,10 +17,14 @@
 				elems.map(elem=>{
 					let li = document.createElement("li");
 					let a = document.createElement("a");
+					let iframe = document.createElement("iframe");
+					iframe.src = "https://raw.githubusercontent.com/stluc-an/20_21_AN1_clipWeb/main/"+elem.path+"/README.txt";
 					a.innerText = elem.name;
 					a.href = elem.path;
 					li.appendChild(a);
+					li.appendChild(iframe);
 					document.querySelector("ul").appendChild(li);
+					
 				})
 		})
 		.catch(err=> console.log(err))
