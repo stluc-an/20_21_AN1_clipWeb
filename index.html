@@ -21,17 +21,22 @@
 						let li = document.createElement("li");
 						let clip = document.createElement("a");
 						let track = document.createElement("a");
+						let splitter = document.createElement("span");
 
 						let txt = await data.text();
 						let [artistname, trackname, link] = txt.split("\n");
 
-						track.innerText = artistname + " - " + trackname;
-						track.href = link;
-
 						clip.innerText = elem.name;
 						clip.href = elem.path;
 						li.appendChild(clip);
-						li.appendChild(track);
+						
+						splitter.innerText(" > ")
+						li.appendChild(splitter);
+
+						track.innerText = artistname + " - " + trackname;
+						track.href = link;
+						li.appendChild(track);						
+						
 						document.querySelector("ul").appendChild(li);
 					})
 					.catch(err=> console.log(err))
