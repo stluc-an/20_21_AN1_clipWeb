@@ -116,7 +116,7 @@ function setup(){
 
 	brouilli = new Brouilli();
 		
-	sequencer = new Sequencer(audioPath, 40, true);
+	sequencer = new Sequencer(audioPath, 40, false);
 	
 	sequencer.registerSequence({
 		name : "montvisibility",
