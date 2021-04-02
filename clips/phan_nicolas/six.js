@@ -20,7 +20,7 @@ let lucioles = [];
 
 let ecran;
 let avant;
-//essa
+
 
 function setup (){
           createCanvas (window.innerWidth, window.innerHeight);
@@ -65,7 +65,7 @@ function setup (){
              console.log("start");
              lucioles.push(new Nouveau());
                },
-             stop : 130 ,
+             stop : 145 ,
              onStop : () => {
              console.log("stop");
              lucioles = [];
