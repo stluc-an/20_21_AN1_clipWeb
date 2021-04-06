@@ -1,4 +1,4 @@
-let audioPath = "./audio/sophie.infatuation.mp3";
+let audioPath = "./audio/sophie.Infatuation.mp3";
 let sequencer;
 
 let alpha = 255;
