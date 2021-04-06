@@ -5,46 +5,75 @@
 	<link rel="stylesheet" type="text/css" href="./src/styles/style.css">
 </head>
 <body>
-	<ul>
-
+	<ul id="studentList" class="open">
+		<li>Clip Web</li>
 	</ul>
 
+	<iframe></iframe>
+
 	<script type="text/javascript">
-		fetch("https://api.github.com/repos/stluc-an/20_21_AN1_clipWeb/contents/clips")
-		.then(async (data)=>{
-				let txt = await data.text();
-				let elems = JSON.parse(txt);
-				elems.map(elem=>{
-					
-					fetch("https://stluc-an.github.io/20_21_AN1_clipWeb/"+elem.path+"/README.txt")
-					.then(async (data)=>{
-						let li = document.createElement("li");
-						let clip = document.createElement("a");
-						let track = document.createElement("a");
-						let splitter = document.createElement("span");
 
-						let txt = await data.text();
-						let [artistname, trackname, link] = txt.split("\n");
+		const requestClips = async () => {
+			const data = await fetch("https://api.github.com/repos/stluc-an/20_21_AN1_clipWeb/contents/clips")
+			const txt = await data.text();
+			return JSON.parse(txt) || [];
+		}
+		const requestTrackInfo = async (path) => {
+			const data = await fetch("https://stluc-an.github.io/20_21_AN1_clipWeb/"+path+"/README.txt");
+			const txt = await data.text();
+			return txt.split("\n");
+		}
+		const createLink = async (elem) => {
+			const [artistname, trackname, link] = await requestTrackInfo(elem.path);
+			const li = document.createElement("li");
+			const clip = document.createElement("a");
+			const track = document.createElement("a");
+			const trackHolder = document.createElement("div");
 
-						clip.innerText = elem.name;
-						clip.target = "_blank";
-						clip.href = elem.path;
-						li.appendChild(clip);
-						
-						splitter.innerText = " > ";
-						li.appendChild(splitter);
+			clip.innerText = elem.name.split("_").reverse().join(" ");
+			clip.target = "_blank";
+			clip.href = elem.path;
+			clip.addEventListener("click", openClip, false);
+			li.appendChild(clip);
+			
+			//splitter.innerText = " > ";
+			//li.appendChild(splitter);
 
-						track.innerText = artistname + " - " + trackname;
-						track.target = "_blank";
-						track.href = link;
-						li.appendChild(track);						
-						
-						document.querySelector("ul").appendChild(li);
-					})
-					.catch(err=> console.log(err))
-				})
-		})
-		.catch(err=> console.log(err))
+			track.innerText = artistname + " - " + trackname;
+			track.target = "_blank";
+			track.href = link;
+			trackHolder.appendChild(track);
+			li.appendChild(trackHolder);						
+			
+			return li;
+			
+		}
+		const openClip = (event) => {
+			event.preventDefault();
+			document.querySelector("iframe").src = event.target.href;
+			document.querySelector(".current")?.classList.remove("current");
+			event.target.parentElement.classList.add("current");
+			event.target
+			return false;
+		}
+
+		const main = async () => {
+			const clips = await requestClips();
+			const links = await Promise.all(clips.map(createLink));
+			const list = document.querySelector("ul#studentList");
+			links.map(link => list.appendChild(link))
+			list.addEventListener("mouseenter", ({target})=>target.classList.add("open"), false);
+			list.addEventListener("mouseleave", ({target})=>{
+				if(document.querySelector(".current")){
+					target.classList.remove("open");	
+				}
+			}, false);
+		}
+
+		main()
+		.then(console.log)
+		.catch(console.log);
+
 	</script>
 </body>
 </html>
