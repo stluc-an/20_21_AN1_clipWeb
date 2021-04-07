@@ -2,7 +2,7 @@
   beakerProject - sketch.js
   @author Evrard Vincent (vincent@ogre.be)
   @Date:   2021-02-04 22:38:59
-  @Last Modified time: 2021-03-29 15:17:57
+  @Last Modified time: 2021-04-07 19:14:37
 \*----------------------------------------*/
 
 p5.Vector.x = new p5.Vector(1, 0, 0);
@@ -21,9 +21,7 @@ let sequencer;
 let pm;
 let cm;
 
-function setup() {
-	noCursor();
-	
+function setup() {	
 	colorMode(RGB);
 	
 	frameRate(60);
@@ -148,3 +146,4 @@ function windowResized(){
 		camera.perspective(camera.cameraFOV, width/height);
 	});
 }
+
