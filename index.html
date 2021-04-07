@@ -3,48 +3,15 @@
 <head>
 	<title>20-21 AN1 clipWeb</title>
 	<link rel="stylesheet" type="text/css" href="./src/styles/style.css">
+	
 </head>
 <body>
-	<ul>
-
+	<ul id="studentList" class="open">
+		<li>Clip Web</li>
 	</ul>
 
-	<script type="text/javascript">
-		fetch("https://api.github.com/repos/stluc-an/20_21_AN1_clipWeb/contents/clips")
-		.then(async (data)=>{
-				let txt = await data.text();
-				let elems = JSON.parse(txt);
-				elems.map(elem=>{
-					
-					fetch("https://stluc-an.github.io/20_21_AN1_clipWeb/"+elem.path+"/README.txt")
-					.then(async (data)=>{
-						let li = document.createElement("li");
-						let clip = document.createElement("a");
-						let track = document.createElement("a");
-						let splitter = document.createElement("span");
+	<iframe></iframe>
 
-						let txt = await data.text();
-						let [artistname, trackname, link] = txt.split("\n");
-
-						clip.innerText = elem.name;
-						clip.target = "_blank";
-						clip.href = elem.path;
-						li.appendChild(clip);
-						
-						splitter.innerText = " > ";
-						li.appendChild(splitter);
-
-						track.innerText = artistname + " - " + trackname;
-						track.target = "_blank";
-						track.href = link;
-						li.appendChild(track);						
-						
-						document.querySelector("ul").appendChild(li);
-					})
-					.catch(err=> console.log(err))
-				})
-		})
-		.catch(err=> console.log(err))
-	</script>
+	<script type="text/javascript" src="./src/scripts/index.js"></script>
 </body>
 </html>
