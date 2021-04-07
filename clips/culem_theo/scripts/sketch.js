@@ -39,7 +39,7 @@ function setup(){
 	createCanvas(window.innerWidth, window.innerHeight);
 
 	noise7d = new Noise7D();
-	sequencer = new Sequencer(audioPath, 58, true);
+	sequencer = new Sequencer(audioPath, 58, false);
 	sequencer.registerSequence({
 		name : "introduction",
 		start : 1,
@@ -386,7 +386,6 @@ class Anim{
 	draw(){
 		if(this.isPlaying == true){
 			let i = floor(this.cursor);
-			console.log(this.imgs, i);
 			image(this.imgs[i], 0, 0, width, height);
 		}
 	}
