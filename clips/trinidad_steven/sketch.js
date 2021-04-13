@@ -30,7 +30,7 @@ function setup() {
 	setCamera(cam); 
 
 	
-	sequencer = new Sequencer(audioPath, 80, true);
+	sequencer = new Sequencer(audioPath, 80, false);
 
 		sequencer.registerSequence({
 		name : "box appear",
