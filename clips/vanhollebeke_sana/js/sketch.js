@@ -1,6 +1,6 @@
-let audioPath = "../assets/audio/Longtime.mp3";
+let audioPath = "../vanhollebeke_sana/assets/audio/Longtime.mp3";
 let sequencer;  
-let imagePath = "../assets/images/image(NUMBER).gif";
+let imagePath = "../vanhollebeke_sana/assets/images/image(NUMBER).gif";
 
 let particules = [];
 
