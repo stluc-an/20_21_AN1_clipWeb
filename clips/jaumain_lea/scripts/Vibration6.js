@@ -1,4 +1,4 @@
-class vibration5{
+class vibration6{
 	constructor(){
 		this.cam = createCamera();
 		this.cam.setPosition(0, 0, 100);
@@ -8,23 +8,22 @@ class vibration5{
 		this.speed = 0;
 		this.moveEnable = true;
 		this.isVisible = false;
-				}
-	
-	draw(){
+							 }
+draw(){
 		if(this.isVisible){
 		noFill();
 		strokeWeight(2);
-		stroke(0, 242, 255);
+		stroke(170, 0, 255);
 
 		if(this.moveEnable){
-			this.speed = frameCount * 0.06;
+			this.speed = frameCount * 0.15;
 		 }
 
 		for(let x = -30 ; x < 30 ; x++){
-			let y1 = noise( x * 2 + this.speed);
-			y1 = lerp(-amp, amp, y1);
-			let y2 = noise( (x + 1) + this.speed);
-			y2 = lerp(-amp, amp, y2);
+			let y1 = noise( x/5 + this.speed);
+			y1 = lerp(-amp, amp - 2, y1);
+			let y2 = noise( (x + 1)/5 + this.speed);
+			y2 = lerp(-amp, amp - 2, y2);
 			beginShape();
 			vertex(x, y1);
 			vertex(x+1, y2);
