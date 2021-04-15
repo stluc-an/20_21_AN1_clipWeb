@@ -1,4 +1,4 @@
-let audioPath ="../assets/Champignons.mp3";
+let audioPath ="assets/Champignons.mp3";
 let sequencer;
 
 let particlues = [];
@@ -7,7 +7,7 @@ let particlues = [];
 function setup(){
      noCanvas()
      
-    sequencer = new Sequencer(audioPath, 120,false);
+    sequencer = new Sequencer(audioPath, 120, true);
      
     sequencer.registerSequence({
          name : "start",
