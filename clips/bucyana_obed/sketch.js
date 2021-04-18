@@ -215,12 +215,12 @@ stroke(125,0,0);
        stroke(125,200,0);
      fill(250,250,250);
      rect(1200,40,window.innerHeight,squareSize);
-     pop();
+     //pop();
 
        stroke(75,0,0);
      fill(250,250,250);
      rect(1000,400,100,squareSize);
-     pop();
+     //pop();
 
       push();
       noStroke();
@@ -287,7 +287,7 @@ stroke(125,0,0);
      fill(0,0,250);
      stroke(250,0,0,);
      rect(951,600,400,squareSize);
-     pop();
+     //pop();
 
 
   noStroke();
@@ -295,7 +295,7 @@ stroke(125,0,0);
      fill(0,200,250);
      stroke(250,0,0,);
      rect(1051,600,400,squareSize);
-     pop();
+     //pop();
 
 
       noStroke();
@@ -303,7 +303,7 @@ stroke(125,0,0);
      fill(255,204,0);
      stroke(255, 200,100);
      rect(900,0,250,squareSize);
-     pop();
+     //pop();
 
 
      noStroke();
@@ -311,7 +311,7 @@ stroke(125,0,0);
      stroke(0, 10, 40);
      fill(250,250,250);
      rect(0,400,window.innerHeight,squareSize);
-     pop();
+     //pop();
 
 
 
