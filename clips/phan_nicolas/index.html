@@ -63,7 +63,7 @@ btnLecture.onclick = function(){
   parole.pitch = 2;  // 0 à 2 (grave)
   parole.rate = 0.8; // 0.5 à 2 (vitesse)
   parole.volume = 1 ; // 0 à 1 (volume )
-
+  parole.lang = "fr-FR";
 
   speechSynthesis.speak(parole);
 
@@ -73,7 +73,7 @@ btnLecture.onclick = function(){
 
        console.log(event);
 
-    document.getElementById("enter").style.display = "block";
+    document.getElementById("enter").style.display = "inline";
 
 
      }
