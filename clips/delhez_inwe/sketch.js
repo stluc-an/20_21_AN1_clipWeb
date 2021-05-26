@@ -34,7 +34,7 @@ function preload(){
 
 function setup(){
     createCanvas(window.innerWidth, window.innerHeight);
-    sequencer = new Sequencer(audioPath, 118, false);
+    sequencer = new Sequencer(audioPath, 118, true);
     sequencer.registerSequence({
         name : "introduction",
         start : 1,
