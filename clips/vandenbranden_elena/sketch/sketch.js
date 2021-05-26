@@ -7,7 +7,7 @@ let particlues = [];
 function setup(){
      noCanvas()
      
-    sequencer = new Sequencer(audioPath, 120, true);
+    sequencer = new Sequencer(audioPath, 120, false);
      
     sequencer.registerSequence({
          name : "start",
@@ -402,7 +402,7 @@ sequencer.registerSequence({
          onStop : () => {
              console.log("refrain1");
              
-             document.querySelector("refrain1").style.display = "none";
+             document.querySelector(".refrain1").style.display = "none";
          },
          onStep : (event) => {
              console.log(event);
@@ -425,7 +425,7 @@ sequencer.registerSequence({
          onStop : () => {
              console.log("refrain2");
              
-             document.querySelector("refrain2").style.display = "none";
+             document.querySelector(".refrain2").style.display = "none";
          },
          onStep : (event) => {
              console.log(event);
