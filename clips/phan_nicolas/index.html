@@ -17,7 +17,7 @@
 
 <body>
 
-<div></div>
+
   <div class = "boite"> <p1 class ="name"> - ENTER YOUR NAME - </p1> <br> <p2 class = "allumer"> (Turn on the volume)</p2>
 
 
@@ -53,18 +53,19 @@ let btnEnter = document.getElementById("enter");
 
 document.getElementById("enter").style.display = "none";
 
-btnLecture.onclick = function(){
+btnLecture.addEventListener("click", function(){
   let texte = inputText.value ;
 
+  console.log(window.speechSynthesis.getVoices());
   let parole = new SpeechSynthesisUtterance();
   console.log(window.speechSynthesis.getVoices());
 
   parole.text = "bonjour " + texte+ " ,  ton prénon humain ne correspond malheureusement pas aux critères du programme  nous allons effectuer une mise à jour , en attendant, apprète toi à vivre une expèrience sonore et visuelle comme tu ne la jamais expèriencé,  cliques sur ènteur si cela te convient, si cela ne te convient pas, mort aux zomo sapihinsse";
-  parole.pitch = 2;  // 0 à 2 (grave)
+  parole.pitch = 1;  // 0 à 2 (grave)
   parole.rate = 0.8; // 0.5 à 2 (vitesse)
   parole.volume = 1 ; // 0 à 1 (volume )
   parole.lang = "fr-FR";
-
+  speechSynthesis.cancel();
   speechSynthesis.speak(parole);
 
 
@@ -78,7 +79,7 @@ btnLecture.onclick = function(){
 
      }
 
- }
+ }, false) ;
 
 
 
