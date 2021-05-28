@@ -1,3 +1,4 @@
+
 let sequencer;
 let audioPath = "./assets/audio/Abyss.mp3";
 let imgPath = "./assets/images/creature1.jpg";
@@ -5,7 +6,7 @@ let imgPieces = [];
 let gridX = 12;
 let gridY = 8;
 
-let xoff = 0 ;
+let xoff =0 ;
 
 let entire_medusa;
 
@@ -21,18 +22,8 @@ function setup() {
     entire_medusa = new Medusa();
     Woods= new Wood();
     
+    
     sequencer = new Sequencer(audioPath, 60, false);
-     sequencer.registerSequence({
-        name : "start",
-        start : 1,
-        onStart : () => {
-         //   document.body.classList.add("play");
-        },
-        stop : 130,
-        onStop : () =>{
-            document.body.classList.remove("play");
-        }
-     });
     sequencer.registerSequence({
         name : "intro",
         start : 3,
@@ -40,7 +31,7 @@ function setup() {
         },
         stop : 19,
         onStop : () =>{
-            console.log("endBlueBbles");
+            console.log("stop");
         }, 
         onStep : ()=>{
             
@@ -55,7 +46,7 @@ function setup() {
         },
         stop : 49,
         onStop : () =>{
-            console.log("endPinkBbles");
+            console.log("stop");
         }, 
         onStep : ()=>{
             
@@ -70,7 +61,7 @@ function setup() {
         },
         stop : 20,
         onStop : () =>{
-            console.log("endPlancton");
+            console.log("stop");
         }, 
         onStep : ()=>{
             
@@ -78,19 +69,20 @@ function setup() {
         }
     });
     
-    sequencer.registerSequence({
-        name : "end",
-        start : 130,
+    /*sequencer.registerSequence({
+        name : "intro4",
+        start : 30,
         onStart : () => {
         },
-        stop : 131,
+        stop : 49,
         onStop : () =>{
-            console.log("restart");
+            console.log("stop");
         }, 
         onStep : ()=>{
-            location.reload();
+            
+           bubbles.push( new Creature()); 
         }
-    });
+    })*/;
     
      let pieceWidth = medusa.width/gridX;
     let pieceHeight = medusa.height/gridY;
@@ -319,16 +311,14 @@ class Algues{
 
         strokeWeight(4);
         stroke(color(50, 200, 50, 50));
-        
-        let alguesHeight = height/20;
 
          for (let a = 0; a < 20; a++){      
 
                 beginShape();
                 //vertex(10 * l, lerp(-45,45, noise(l*this.wavesAlgueV1 + speed)));
                 //vertex(10 * (l+1), lerp(-45,45, noise((l+1) * this.wavesAlgueV2 + speed)));
-                vertex(lerp(-40,40, noise(0.05*(a) + frameCount * 0.01)), alguesHeight*a);
-                vertex(lerp(-40,40, noise(0.1*(a+1) + frameCount * 0.01)), alguesHeight*(a+1));
+                vertex(lerp(-40,40, noise(0.05*(a) + frameCount * 0.01)), 35*a);
+                vertex(lerp(-40,40, noise(0.1*(a+1) + frameCount * 0.01)), 35*(a+1));
                 endShape();
          }
         pop();
@@ -502,5 +492,4 @@ class Creature{
         this.xoff += 0.002;
     }   
 }
-
 Creature.COUNT = 0;
