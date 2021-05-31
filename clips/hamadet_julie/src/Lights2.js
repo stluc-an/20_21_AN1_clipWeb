@@ -15,23 +15,23 @@ class lights2{
 		push();
 		translate(this.a, 8);	
 		beginShape();
-		vertex(-1900,-1000);
-		vertex(-2100,-800);
-		vertex(-1900,-600);
-		vertex(-2030,-580);
-		vertex(-2030,-300);
-		vertex(-1900,-300);
-		vertex(-1900,-100);
-		vertex(-2050,-100);
-		vertex(-2050,200);
-		vertex(-1850,200);
-		vertex(-1850,300);
-		vertex(-2050,300);
-		vertex(-2050,300);
-		vertex(-2050,300);
-		vertex(-2050,400);
-		vertex(-1900,390);
-		vertex(-1910,950);
+		vertex(-1600,-1000);
+		vertex(-1800,-800);
+		vertex(-1600,-600);
+		vertex(-1730,-580);
+		vertex(-1730,-300);
+		vertex(-1600,-300);
+		vertex(-1600,-100);
+		vertex(-1750,-100);
+		vertex(-1750,200);
+		vertex(-1550,200);
+		vertex(-1550,300);
+		vertex(-1750,300);
+		vertex(-1750,300);
+		vertex(-1750,300);
+		vertex(-1750,400);
+		vertex(-1600,390);
+		vertex(-1610,950);
 		endShape();
 		pop();
 
@@ -39,24 +39,24 @@ class lights2{
 		push()
 		translate(this.a, 8);
 		beginShape();
-		vertex(-2000,-1050);
-		vertex(-2000,850);
+		vertex(-1815,-1050);
+		vertex(-1815,850);
 		endShape();
 		pop();
 		
 		beginShape();
-		vertex(-1980,-500);
-		vertex(-1980,500);
+		vertex(-1780,-500);
+		vertex(-1780,500);
 		endShape();
 	
 		beginShape();
-		vertex(-1980,-900);
-		vertex(-1980,-600);
+		vertex(-1850,-900);
+		vertex(-1850,-600);
 		endShape();
 		
 		beginShape();
-		vertex(-1980,550);
-		vertex(-1980,750);
+		vertex(-1850,550);
+		vertex(-1850,750);
 		endShape();
 	
 	
