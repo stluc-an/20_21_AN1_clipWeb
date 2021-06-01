@@ -1,10 +1,10 @@
 class mont3{
 	constructor(){
-		this.cam = createCamera();
+		/*this.cam = createCamera();
 		this.cam.setPosition(0, 0, 100);
 		this.cam.lookAt(0, 0, 0);
 		this.cam.perspective(PI * 0.07, width/height);
-		setCamera(this.cam);
+		setCamera(this.cam);*/
 		this.speed =0;
 		this.moveEnable = true;
 		this.isVisible = false;
