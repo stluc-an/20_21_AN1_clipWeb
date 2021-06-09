@@ -1,4 +1,3 @@
 DOOMROAR
-Night Stories
-05 Horizon
+Horizon
 https://doomroarmusic.bandcamp.com/album/night-stories
