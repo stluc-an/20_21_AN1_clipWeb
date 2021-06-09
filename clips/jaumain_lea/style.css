@@ -9,6 +9,7 @@ body
 	justify-content: center;
 	align-items: center;
 	min-height: 100vh;
+	margin: 0;
 }
 .circle
 {
@@ -85,3 +86,27 @@ svg
 	width: 0;
 	height: 0;
 }
+
+p {
+	position: absolute;
+	font-size: 5vh;
+	font-family: sans-serif;
+	color: ghostwhite;
+	text-align: center;
+	top: 40vh; left: 50vw;
+	transform: translate(-50%, -50%);
+	transition-duration: 1s;
+  }
+
+#moi {
+	font-size: 3.5vh;
+	top: 50vh;
+     }
+
+#lib {
+	font-size: 3.5vh;
+	top: 55vh;
+     }
+
+.pa{opacity: 0%;}
+.visible{opacity: 100%;}

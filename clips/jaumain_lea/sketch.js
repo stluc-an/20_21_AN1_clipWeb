@@ -2,7 +2,10 @@ let audioPath = "./assets/audio/DOOMROAR - Night Stories - 05 Horizon.mp3";
 let sequencer;
 let amp = 7;
 let particlues = [];
-
+let shake = false;
+let growth = false;
+let oldGrowth = false;
+let size ;
 function setup(){
     createCanvas(window.innerWidth, window.innerHeight, WEBGL);
     sequencer = new Sequencer(audioPath, 220, false);
@@ -29,6 +32,20 @@ function setup(){
 		stop : 201,
 		onStop : () => {
 			view.isVisible = false;
+		},
+
+	});
+
+	sequencer.registerSequence({
+		name : "mvmt1",
+		start : 1,
+		onStart : () => {
+			growth = true;
+			
+		},
+		stop : 102,
+		onStop : () => {
+			growth = false;
 		},
 
 	});
@@ -482,6 +499,20 @@ function setup(){
 
 	});
 
+		sequencer.registerSequence({
+		name : "mvmt2",
+		start : 337,
+		onStart : () => {
+			shake = true;
+			
+		},
+		stop : 369,
+		onStop : () => {
+			shake = false;
+		},
+
+	});
+
 	sequencer.registerSequence({
 		name : "ondulation3",
 		start : 370,
@@ -517,7 +548,7 @@ function setup(){
 			view5.isVisible = true;
 			
 		},
-		stop : 800,
+		stop : 730,
 		onStop : () => {
 			view5.isVisible = false;
 		},
@@ -531,7 +562,7 @@ function setup(){
 			view.isVisible = true;
 			
 		},
-		stop : 800,
+		stop : 730,
 		onStop : () => {
 			view.isVisible = false;
 		},
@@ -545,12 +576,32 @@ function setup(){
 			view6.isVisible = true;
 			
 		},
-		stop : 800,
+		stop : 730,
 		onStop : () => {
 			view6.isVisible = false;
 		},
 
 	});
+
+			sequencer.registerSequence({
+		name : "fin",
+		start : 728,
+		onStart : () => {
+			console.log("start");
+			
+		},
+		stop : 780,
+		onStop : () => {
+			console.log("stop");
+			var Titr = document.getElementById("titre");
+			Titr.classList.add("visible");
+			var lea = document.getElementById("moi");
+			lea.classList.add("visible");
+			var Libr = document.getElementById("lib");
+			Libr.classList.add("visible");
+		},
+
+	});	
 
 			}       
 
@@ -559,7 +610,24 @@ function draw(){
     background(0);
     for(let particlue of particlues){
         particlue.draw(); 
-    								}
+    }
+    if(shake){
+        let monCercle = document.querySelector(".circle");
+        monCercle.style.width = 800 + (noise(frameCount / 1) - 0.5) * 30;
+        monCercle.style.height = 800 + (noise(frameCount / 1) - 0.5) * 30;
+    }
+
+    if(growth){
+    	if(oldGrowth == false){
+    		size = 220;
+    	}
+    	size ++;
+        let monCercle = document.querySelector(".circle");
+        monCercle.style.width = size;
+        monCercle.style.height = size;
+    }
+    oldGrowth = growth;
+
 
 	view.draw();
 	view2.draw();
