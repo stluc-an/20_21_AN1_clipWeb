@@ -1,0 +1,265 @@
+{
+	"auto_complete":
+	{
+		"selected_items":
+		[
+			[
+				"noise",
+				"Noise3D"
+			]
+		]
+	},
+	"buffers":
+	[
+		{
+			"file": "index.html",
+			"settings":
+			{
+				"buffer_size": 510,
+				"encoding": "UTF-8",
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "sketch.js",
+			"settings":
+			{
+				"buffer_size": 4430,
+				"encoding": "UTF-8",
+				"line_ending": "Windows"
+			}
+		}
+	],
+	"build_system": "",
+	"build_system_choices":
+	[
+	],
+	"build_varint": "",
+	"command_palette":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"console":
+	{
+		"height": 0.0,
+		"history":
+		[
+		]
+	},
+	"distraction_free":
+	{
+		"menu_visible": true,
+		"show_minimap": false,
+		"show_open_files": false,
+		"show_tabs": false,
+		"side_bar_visible": false,
+		"status_bar_visible": false
+	},
+	"expanded_folders":
+	[
+		"/C/Users/HP/Documents/ESA/Progra/20_21_AN1_clipWeb/clips/lebrun_louis",
+		"/C/Users/HP/Documents/ESA/Progra/20_21_AN1_clipWeb/clips/lebrun_louis/assets",
+		"/C/Users/HP/Documents/ESA/Progra/20_21_AN1_clipWeb/clips/lebrun_louis/assets/audio",
+		"/C/Users/HP/Documents/ESA/Progra/20_21_AN1_clipWeb/clips/lebrun_louis/assets/audio/Jemon&Moska"
+	],
+	"file_history":
+	[
+		"/C/Users/HP/Documents/ESA/Progra/20_21_AN1_clipWeb/lib/SequencerJS/dist/bundle.js",
+		"/C/Users/HP/Documents/ESA/Progra/20_21_AN1_clipWeb/project.html",
+		"/C/Users/HP/Documents/ESA/Progra/20_21_AN1_clipWeb/clips/lebrun_louis/sketch.js",
+		"/C/Users/HP/Documents/ESA/Progra/20_21_AN1_clipWeb/clips/lebrun_louis/style.css",
+		"/C/Users/HP/Documents/ESA/Progra/Clip/sketch.js",
+		"/C/Users/HP/Documents/ESA/Progra/Clip/CLIP_JEMON"
+	],
+	"find":
+	{
+		"height": 28.0
+	},
+	"find_in_files":
+	{
+		"height": 0.0,
+		"where_history":
+		[
+		]
+	},
+	"find_state":
+	{
+		"case_sensitive": false,
+		"find_history":
+		[
+			"Noise3D"
+		],
+		"highlight": true,
+		"in_selection": false,
+		"preserve_case": false,
+		"regex": false,
+		"replace_history":
+		[
+		],
+		"reverse": false,
+		"show_context": true,
+		"use_buffer2": true,
+		"whole_word": false,
+		"wrap": true
+	},
+	"groups":
+	[
+		{
+			"selected": 1,
+			"sheets":
+			[
+				{
+					"buffer": 0,
+					"file": "index.html",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 510,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								312,
+								312
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/HTML/HTML.sublime-syntax",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 1,
+					"type": "text"
+				},
+				{
+					"buffer": 1,
+					"file": "sketch.js",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 4430,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1595,
+								1595
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JavaScript.sublime-syntax",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 1197.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 0,
+					"type": "text"
+				}
+			]
+		}
+	],
+	"incremental_find":
+	{
+		"height": 28.0
+	},
+	"input":
+	{
+		"height": 0.0
+	},
+	"layout":
+	{
+		"cells":
+		[
+			[
+				0,
+				0,
+				1,
+				1
+			]
+		],
+		"cols":
+		[
+			0.0,
+			1.0
+		],
+		"rows":
+		[
+			0.0,
+			1.0
+		]
+	},
+	"menu_visible": true,
+	"output.find_results":
+	{
+		"height": 0.0
+	},
+	"output.unsaved_changes":
+	{
+		"height": 31.0
+	},
+	"pinned_build_system": "",
+	"project": "CLIP_Jemon.sublime-project",
+	"replace":
+	{
+		"height": 52.0
+	},
+	"save_all_on_build": true,
+	"select_file":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"select_project":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"select_symbol":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"selected_group": 0,
+	"settings":
+	{
+	},
+	"show_minimap": true,
+	"show_open_files": false,
+	"show_tabs": true,
+	"side_bar_visible": true,
+	"side_bar_width": 263.0,
+	"status_bar_visible": true,
+	"template_settings":
+	{
+	}
+}
