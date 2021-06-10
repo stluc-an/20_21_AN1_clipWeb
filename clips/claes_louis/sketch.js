@@ -1,4 +1,6 @@
 var fond;
+//var perso
+var chara;
 //var bulles
 var bulles;
 //var fleurs roses
@@ -31,6 +33,8 @@ let sequencer
 function preload(){
 
 	fond = loadImage("fond.png");
+	//personnage
+	chara = new ImgDisplayer("chara.png",-500,0,1110,900);
 	//bulles
 	bulles = new ImgDisplayer("bulles-couleur.png", 450,250, 576,200);
 	//fleurs roses
@@ -62,9 +66,9 @@ function preload(){
 }
 
 function setup(){
-	createCanvas(1920,1080);
+	createCanvas(windowWidth, windowHeight);
 	//séquenceur
-	sequencer = new Sequencer(audiopath , 40 , false);
+	sequencer = new Sequencer(audiopath , 40 , true);
 	sequencer.registerSequence({
 		name : "bulles",
 		start : 8+1/2,
@@ -79,12 +83,25 @@ function setup(){
 
 	});
 	sequencer.registerSequence({
+		name : "chara",
+		start : 1,
+		onStart : () => {
+			chara.isVisible = true ; 
+		},
+		stop : 130,
+		onStop : () => {
+			console.log("stop");
+			chara.isVisible = false ;
+	    },
+
+	});
+	sequencer.registerSequence({
 		name : "fleurrose1",
 		start : 12,
 		onStart : () => {
 			fleurrose1.isVisible = true ; 
 		},
-		stop : 127,
+		stop : 65,
 		onStop : () => {
 			console.log("stop");
 			fleurrose1.isVisible = false ;
@@ -97,7 +114,7 @@ function setup(){
 		onStart : () => {
 			fleurrose2.isVisible = true ; 
 		},
-		stop : 127,
+		stop : 66,
 		onStop : () => {
 			console.log("stop");
 			fleurrose2.isVisible = false ;
@@ -110,7 +127,7 @@ function setup(){
 		onStart : () => {
 			fleurrose3.isVisible = true ; 
 		},
-		stop : 127,
+		stop : 67,
 		onStop : () => {
 			console.log("stop");
 			fleurrose3.isVisible = false ;
@@ -123,7 +140,7 @@ function setup(){
 		onStart : () => {
 			fleurrose4.isVisible = true ; 
 		},
-		stop : 127,
+		stop : 68,
 		onStop : () => {
 			console.log("stop");
 			fleurrose4.isVisible = false ;
@@ -136,7 +153,7 @@ function setup(){
 		onStart : () => {
 			fleurrose5.isVisible = true ; 
 		},
-		stop : 127,
+		stop : 69,
 		onStop : () => {
 			console.log("stop");
 			fleurrose5.isVisible = false ;
@@ -149,7 +166,7 @@ function setup(){
 		onStart : () => {
 			fleurrose6.isVisible = true ; 
 		},
-		stop : 127,
+		stop : 70,
 		onStop : () => {
 			console.log("stop");
 			fleurrose6.isVisible = false ;
@@ -162,7 +179,7 @@ function setup(){
 		onStart : () => {
 			fleurorange1.isVisible = true ; 
 		},
-		stop : 127,
+		stop : 71,
 		onStop : () => {
 			console.log("stop");
 			fleurorange1.isVisible = false ;
@@ -175,7 +192,7 @@ function setup(){
 		onStart : () => {
 			fleurorange2.isVisible = true ; 
 		},
-		stop : 127,
+		stop : 72,
 		onStop : () => {
 			console.log("stop");
 			fleurorange2.isVisible = false ;
@@ -188,7 +205,7 @@ function setup(){
 		onStart : () => {
 			fleurorange3.isVisible = true ; 
 		},
-		stop : 127,
+		stop : 73,
 		onStop : () => {
 			console.log("stop");
 			fleurorange3.isVisible = false ;
@@ -201,7 +218,7 @@ function setup(){
 		onStart : () => {
 			fleurorange4.isVisible = true ; 
 		},
-		stop : 127,
+		stop : 74,
 		onStop : () => {
 			console.log("stop");
 			fleurorange4.isVisible = false ;
@@ -214,7 +231,7 @@ function setup(){
 		onStart : () => {
 			fleurbleue1.isVisible = true ; 
 		},
-		stop : 127,
+		stop : 75,
 		onStop : () => {
 			console.log("stop");
 			fleurbleue1.isVisible = false ;
@@ -227,7 +244,7 @@ function setup(){
 		onStart : () => {
 			fleurbleue2.isVisible = true ; 
 		},
-		stop : 127,
+		stop : 76,
 		onStop : () => {
 			console.log("stop");
 			fleurbleue2.isVisible = false ;
@@ -240,7 +257,7 @@ function setup(){
 		onStart : () => {
 			fleurbleue3.isVisible = true ; 
 		},
-		stop : 127,
+		stop : 77,
 		onStop : () => {
 			console.log("stop");
 			fleurbleue3.isVisible = false ;
@@ -253,7 +270,7 @@ function setup(){
 		onStart : () => {
 			fleurbleue4.isVisible = true ; 
 		},
-		stop : 127,
+		stop : 78,
 		onStop : () => {
 			console.log("stop");
 			fleurbleue4.isVisible = false ;
@@ -266,7 +283,7 @@ function setup(){
 		onStart : () => {
 			fleurbleue5.isVisible = true ; 
 		},
-		stop : 127,
+		stop : 79,
 		onStop : () => {
 			console.log("stop");
 			fleurbleue5.isVisible = false ;
@@ -378,10 +395,18 @@ function setup(){
 	nuage4.speedX = -1.5;
 	nuage5.speedX = 1.5;
 	nuage6.speedX = -1;
+	//vitesse perso
+	chara.speedX = 2.5;
 }
 
 function draw() {
 	background(fond, width, height);
+	//perso
+	chara.draw();
+	if (chara.x > 370) {
+		chara.x = 370;
+	}
+	//nuage
 	nuage1.draw();
 	if (nuage1.x > 2000) {
 		nuage1.x = 0;
