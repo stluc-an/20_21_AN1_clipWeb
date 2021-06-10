@@ -15,7 +15,7 @@ function setup(){
     
     goute = new Goute(width/2, height/2, 20);
     
-    sequencer= new Sequencer(audioPath, 34, true);
+    sequencer= new Sequencer(audioPath, 34, false);
    
     
     sequencer.registerSequence({
@@ -414,7 +414,7 @@ function setup(){
              
              /* 41 long time no see baby */
              
-             if(event.step == 110){
+             if(event.step == 111){
                  
              document.querySelectorAll("li")[42].style.display="none"; 
              document.querySelectorAll("li")[43].style.display="block";
@@ -552,7 +552,7 @@ class Rectangle{
     constructor(x,y,){
     this.x = x;
     this.y = y;
-    this.size = 4,5;
+    this.size = 5;
         
         
         
@@ -561,7 +561,7 @@ class Rectangle{
   draw(){
     
     noStroke(); 
-    fill(225, 225, 225, 200); 
+    fill(225, 225, 225, 150); 
     rect(this.x, this.y, this.size);  
       
       
