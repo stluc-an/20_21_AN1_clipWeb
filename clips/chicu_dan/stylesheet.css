@@ -11,25 +11,32 @@ button:hover{
   font-size: 10.2vw;
 }
 
+html, body {
+  height: 100%;
+}
+
 body{
-  background-image: url("assets/skate.gif");
-  background-repeat: no-repeat;
+  background-image: url("assets/firstframe.png");
+  background-repeat: repeat;
   background-size: cover;
   overflow: hidden;
   margin: 0;
   font-family: vcr_osd_monoregular;
   color: white;
-  opacity: 0.75;
   font-size: 6vh;
+}
+canvas{
+    position: absolute;
+    top: 0;
+    z-index: -1;
+    opacity: 0.2;
+    
 }
 
 #date{
-  float: right;
+  text-align: right;
+  margin-top: 3vh;
   margin-right: 3vw;
-  z-index: 9;
-  position:absolute;
-  top: 3vh;
-  left:75vw;
 }
 
 @font-face {
@@ -40,3 +47,4 @@ body{
     font-style: normal;
 
 }
+
