@@ -7,8 +7,9 @@ let img;
 let audioPath = "assets/audio/December_in_NewYork.mp3" ;
 let cameraZoom;
 let imgPieces = [];
-let gridX = 9;
-let gridY = 9;
+let gridX = 10;
+let gridY = 10;
+
 
 function preload(){
     img = loadImage(imgPath);
