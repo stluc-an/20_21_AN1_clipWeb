@@ -14,27 +14,37 @@ let pig;
 let bc;
 let penta;
 
+let bgBlack;
+let bgRed;
+let bgColor;
+
 function preload(){
-    pentagone = new ImagesDiplayer("./assets/image/export/p_NUMBER_.jpg", 6, 700, 700);
-    bougie = new ImagesDiplayer("./assets/image/export/b_NUMBER_.jpg", 14, 700, 700);
-    mind = new ImagesDiplayer("./assets/image/export/m_NUMBER_.jpg", 4, 700, 700);
-    door = new ImagesDiplayer("./assets/image/export/d_NUMBER_.jpg", 14, 700, 700);
-    eye = new ImagesDiplayer("./assets/image/export/e_NUMBER_.jpg", 8, 700, 700);
+    pentagone = new ImagesDiplayer("./assets/image/export/p_NUMBER_.PNG", 6, 700, 700);
+    bougie = new ImagesDiplayer("./assets/image/export/b_NUMBER_.PNG", 14, 700, 700);
+    mind = new ImagesDiplayer("./assets/image/export/m_NUMBER_.PNG", 4, 700, 700);
+    door = new ImagesDiplayer("./assets/image/export/d_NUMBER_.PNG", 14, 700, 700);
+    eye = new ImagesDiplayer("./assets/image/export/e_NUMBER_.PNG", 8, 700, 700);
     anim = new ImagesDiplayer("./assets/image/export/_NUMBER_.jpg", 109, 1333, 1000);
-    rodger = new ImagesDiplayer("./assets/image/export/rodger_NUMBER_.jpg", 1, 759, 426);
+    rodger = new ImagesDiplayer("./assets/image/export/rodger_NUMBER_.png", 1, 759, 426);
     bruit = new ImagesDiplayer("./assets/image/export/bruit_NUMBER_.jpg", 1, 833, 469);
     badrod = new ImagesDiplayer("./assets/image/export/badrodger_NUMBER_.jpg", 1, 781, 440);
     bruit2 = new ImagesDiplayer("./assets/image/export/bruit_NUMBER_.jpg", 1, 833, 469);
-    pig = new ImagesDiplayer("./assets/image/export/pig_NUMBER_.jpg", 6, 700, 700);
+    pig = new ImagesDiplayer("./assets/image/export/pig_NUMBER_.PNG", 6, 700, 700);
     bc = new ImagesDiplayer("./assets/image/export/bc_NUMBER_.jpg", 1, 1235, 413);
-    penta = new ImagesDiplayer("./assets/image/export/p_NUMBER_.jpg", 6, 700, 700);
+    penta = new ImagesDiplayer("./assets/image/export/p_NUMBER_.PNG", 6, 700, 700);
 }
 
 
 
 function setup(){
     createCanvas(window.innerWidth, window.innerHeight);
-    sequencer = new Sequencer(audioPath, 118, false);
+    bgBlack = color(0,0,0);
+    bgRed = color(255,0,0);
+
+    bgColor = bgRed;
+
+    sequencer = new Sequencer(audioPath, 118, true);
+
     sequencer.registerSequence({
         name : "introduction",
         start : 1,
@@ -50,6 +60,17 @@ function setup(){
         steps : [1, 1+1/3, 1+2/3],
         onStep : (event) =>{
            pentagone.nextFrame();
+           if(bgColor == bgBlack){
+             bgColor = bgRed
+           }else{
+             bgColor = bgBlack
+           }
+
+
+
+
+
+
         }
     });
     
@@ -68,7 +89,12 @@ function setup(){
         steps : [1, 1+1/3, 1+2/3],
         onStep : (event) =>{
            bougie.nextFrame();
-        }
+           if(bgColor == bgBlack){
+             bgColor = bgRed
+           }else{
+             bgColor = bgBlack
+             }  
+        } 
     });
     
         sequencer.registerSequence({
@@ -86,6 +112,11 @@ function setup(){
         steps : [1, 1+1/3, 1+2/3],
         onStep : (event) =>{
            mind.nextFrame();
+           if(bgColor == bgBlack){
+             bgColor = bgRed
+           }else{
+             bgColor = bgBlack
+              }
         }
     });
         
@@ -104,6 +135,11 @@ function setup(){
         steps : [1, 1+1/3, 1+2/3],
         onStep : (event) =>{
            door.nextFrame();
+           if(bgColor == bgBlack){
+             bgColor = bgRed
+           }else{
+             bgColor = bgBlack
+              }
         }
     });
 
@@ -122,6 +158,11 @@ function setup(){
         steps : [1, 1+1/3, 1+2/3],
         onStep : (event) =>{
            eye.nextFrame();
+           if(bgColor == bgBlack){
+             bgColor = bgRed
+           }else{
+             bgColor = bgBlack
+              }
         }
     });
 
@@ -230,6 +271,11 @@ sequencer.registerSequence({
         steps : [1, 1+1/3, 1+2/3],
         onStep : (event) =>{
            pig.nextFrame();
+           if(bgColor == bgBlack){
+             bgColor = bgRed
+           }else{
+             bgColor = bgBlack
+              }
         }
     });
 
@@ -266,6 +312,11 @@ sequencer.registerSequence({
         steps : [1, 1+1/3, 1+2/3],
         onStep : (event) =>{
            penta.nextFrame();
+           if(bgColor == bgBlack){
+             bgColor = bgRed
+           }else{
+             bgColor = bgBlack
+              }
         }
     });
 
@@ -276,7 +327,7 @@ sequencer.registerSequence({
 function draw(){
 
     sequencer.update();
-    background(0);
+    background(bgColor);
     pentagone.draw();
     bougie.draw();
     mind.draw();
