@@ -8,17 +8,16 @@ let orderOfRotation;
 let orderSlider;
 let weightSlider;
 let xoff = 0;
+let yoff = 0;
 let hu = xoff * 255;   
 let angle;
 
 let view;
 function setup() {
 
-    createCanvas(window.innerWidth,window.innerHeight, WEBGL);
-    view= new Noir();
-    
-}
-sequencer = new Sequencer(audioPath,128, false);
+  createCanvas(window.innerWidth,window.innerHeight, WEBGL);
+  view= new Noir();
+  sequencer = new Sequencer(audioPath,128, false);
 
   sequencer.registerSequence({
       name : "Noir",
@@ -27,14 +26,15 @@ sequencer = new Sequencer(audioPath,128, false);
         console.log ("start");
       },
       stop : 16,
-      onStop : () => { view= new Line1();
-    },
-        steps: [1,1+1/4, 1+2/4,1+3/4],
+      onStop : () => { 
+        view= new Line1();
+      },
+      steps: [1,1+1/4, 1+2/4,1+3/4],
       onStep : (event) => {
         console.log (event);
         view.speed += 0.1
       }
-    })
+  });
   sequencer.registerSequence({
       name : "Drop1",
       start : 65,
@@ -88,7 +88,7 @@ sequencer = new Sequencer(audioPath,128, false);
         view.speed += 0.08
 }
 })
-    sequencer.registerSequence({
+  sequencer.registerSequence({
       name : "Kick1",
       start : 500,
       onStart : () => {view = new Noir()},
@@ -98,8 +98,9 @@ sequencer = new Sequencer(audioPath,128, false);
       onStep : (event) => {
         console.log (event);
         view.speed += 0.08
+    }
+  })
 }
-})
 
 function draw() {
  view.draw();
@@ -193,7 +194,7 @@ class Line1{
             y2= lerp(-10,10,y2)
         
          //plane(random(80));
-            stroke(0,500,0);
+            stroke(100,100,500);
           
             strokeWeight(25);
             beginShape();
@@ -237,7 +238,10 @@ class Line1{
       background(0,0,0);
     }
   }
-       class Line2 {
+
+
+
+  class Line2 {
     constructor(){
         this.cam = createCamera();
         this.cam.setPosition(0,0,150);
@@ -255,11 +259,13 @@ class Line1{
             let color= random(10);
             y1 = lerp(-10,10,y1)
             let y2= noise((x+1)*0.03+speed);
-            y2= lerp(-1,1,y2)
-        
-        ;
-        let hu = noise(xoff)*random(500); 
-        stroke(hu, 0, 256, 500);
+            y2= lerp(-1,1,y2);
+            colorMode (HSB,255,255,255,255);
+            yoff+=0.005;
+            let hu = lerp(180, 255, noise(x, yoff , 100));
+            let sat =  lerp(180, 255, noise(x, yoff));
+            let bri = lerp(180,2550, noise(x, yoff,  100)); 
+            stroke(hu, sat, bri, 255);
          // colorMode (HSB,255,2,2,0);
             strokeWeight(15,1000);
             beginShape();
@@ -269,6 +275,9 @@ class Line1{
           }
     }
   }
+
+
+
     class Line3 {
     constructor(){
         this.cam = createCamera();
@@ -291,8 +300,8 @@ class Line1{
         
         ;
         let hu = noise(xoff)*random(500); 
-        stroke(hu, 512, 256, 500);
-          colorMode (HSB,255,2,2,0);
+        colorMode (HSB,255,255,255);
+        stroke(hu, 255, 255, 255);
             strokeWeight(15,1000);
             beginShape();
             vertex(x,y1);
@@ -312,11 +321,12 @@ class Line1{
     draw(){
         background(0,0,0);
         noFill();
-     stroke(hu, 1000, 50, 100);
+        colorMode (RGB,255,255,255);
+        stroke(hu, 255, 255, 255);
+            strokeWeight(15,1000);
+     stroke(255, 50, 100);
       strokeWeight(random(150));
      plane(1);
-
-rotateX (random(270));
     } 
   }
     class Bump2 {
