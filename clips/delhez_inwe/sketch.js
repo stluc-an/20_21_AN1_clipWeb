@@ -44,6 +44,7 @@ function setup(){
     bgColor = bgRed;
 
     sequencer = new Sequencer(audioPath, 118, true);
+
     sequencer.registerSequence({
         name : "introduction",
         start : 1,

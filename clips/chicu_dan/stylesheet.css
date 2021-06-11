@@ -1,0 +1,42 @@
+button{
+  background-color: transparent;
+  color: blue;
+  border: none;
+  font-family: vcr_osd_monoregular;
+  font-size: 10vw;
+  opacity: 0.75;
+}
+
+button:hover{
+  font-size: 10.2vw;
+}
+
+body{
+  background-image: url("assets/skate.gif");
+  background-repeat: no-repeat;
+  background-size: cover;
+  overflow: hidden;
+  margin: 0;
+  font-family: vcr_osd_monoregular;
+  color: white;
+  opacity: 0.75;
+  font-size: 6vh;
+}
+
+#date{
+  float: right;
+  margin-right: 3vw;
+  z-index: 9;
+  position:absolute;
+  top: 3vh;
+  left:75vw;
+}
+
+@font-face {
+    font-family: 'vcr_osd_monoregular';
+    src: url('assets/fontkit/vcr_osd_mono_1.001-webfont.woff2') format('woff2'),
+         url('assets/fontkit/vcr_osd_mono_1.001-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+
+}

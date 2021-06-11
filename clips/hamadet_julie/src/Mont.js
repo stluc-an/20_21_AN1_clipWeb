@@ -20,7 +20,7 @@ class mont{
 			this.speed = frameCount * 0.005;
 		 }
 
-		for(let x = -20 ; x < 20 ; x++){
+		for(let x = -22 ; x < 22 ; x++){
 			let y1 = noise( x + this.speed);
 			y1 = lerp(-amp, amp, y1);
 			let y2 = noise( x + 1 + this.speed);

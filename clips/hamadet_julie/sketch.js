@@ -1,10 +1,9 @@
-let audioPath = "./assets/audio/cloZee.mp3";
+let audioPath = "./assets/audio/CloZee_Mirage.mp3";
 let sequencer;
 
 let view;
-let amp = 1;
 
-let imagesHolder = [];
+let amp = 1;
 
 let brouilli;
 
@@ -14,96 +13,7 @@ let view2;
 
 let view3;
 
-function preload() {
-	//fleurs 0-3
-	imagesHolder.push(new ImageDisplayer('./assets/img/fleur1.png', -16 , 8, 2, 2));
-	imagesHolder.push(new ImageDisplayer('./assets/img/fleur1.png', -3 , 6, 2, 2));
-	imagesHolder.push(new ImageDisplayer('./assets/img/fleur1.png', 5 , 8, 2, 2));
-	imagesHolder.push(new ImageDisplayer('./assets/img/fleur1.png', 17 , 8, 2, 2));
-	//pousses 4-7
-	imagesHolder.push(new ImageDisplayer('./assets/img/pousse1.png', -16 , 7, 6, 6));
-	imagesHolder.push(new ImageDisplayer('./assets/img/pousse1.png', -3 , 5, 7, 7));
-	imagesHolder.push(new ImageDisplayer('./assets/img/pousse1.png', 5 , 7, 7, 7));
-	imagesHolder.push(new ImageDisplayer('./assets/img/pousse1.png', 17 , 7, 7, 7));
-	//pousses 8-11
-	imagesHolder.push(new ImageDisplayer('./assets/img/pousse2a.png', -13 , 3, 17, 14));
-	imagesHolder.push(new ImageDisplayer('./assets/img/pousse3a.png', -1 , 1, 15, 18));
-	imagesHolder.push(new ImageDisplayer('./assets/img/pousse4a.png', 8 , 4, 13, 12));
-	imagesHolder.push(new ImageDisplayer('./assets/img/pousse5a.png', 17 , 4, 8, 12));
-	//pousses 12-15
-	imagesHolder.push(new ImageDisplayer('./assets/img/pousse2b.png', -13 , -1, 18, 22));
-	imagesHolder.push(new ImageDisplayer('./assets/img/pousse3b.png', -1 , -1, 16, 22));
-	imagesHolder.push(new ImageDisplayer('./assets/img/pousse4b.png', 11 , -1, 19, 22));
-	imagesHolder.push(new ImageDisplayer('./assets/img/pousse5b.png', 17 , 0, 8, 21));
-	//pousses 16-19
-	imagesHolder.push(new ImageDisplayer('./assets/img/pousse2c.png', -13 , -1, 18, 22));
-	imagesHolder.push(new ImageDisplayer('./assets/img/pousse3c.png', -1 , -1, 15, 22));
-	imagesHolder.push(new ImageDisplayer('./assets/img/pousse4c.png', 11 , -1, 19, 22));
-	imagesHolder.push(new ImageDisplayer('./assets/img/pousse5c.png', 17 , 0, 8, 21));
-	//oiseaux 20-24
-	imagesHolder.push(new ImageDisplayer('./assets/img/oiseaux1.png', -19 , 7, 7, 6)); 
-	imagesHolder.push(new ImageDisplayer('./assets/img/oiseaux2.png', -18 , 6, 9, 8));
-	imagesHolder.push(new ImageDisplayer('./assets/img/oiseaux3.png', -15 , 4, 14, 11));
-	imagesHolder.push(new ImageDisplayer('./assets/img/oiseaux4.png', -14 , 4, 16, 13));
-	imagesHolder.push(new ImageDisplayer('./assets/img/oiseaux5.png', -12 , 3, 19, 16));
-	//nuage 25-28
-	imagesHolder.push(new ImageDisplayer('./assets/img/nuage1.png', 18 , 1, 5, 7));
-	imagesHolder.push(new ImageDisplayer('./assets/img/nuage2.png', 16 , 1, 10, 10));
-	imagesHolder.push(new ImageDisplayer('./assets/img/nuage3.png', 15 , -2, 16, 17));
-	imagesHolder.push(new ImageDisplayer('./assets/img/nuage4.png', 11 , -2, 20, 20));
-	//transfo en mont 29-32
-	imagesHolder.push(new ImageDisplayer('./assets/img/transf1.png', -1 , -1, 44, 23));
-	imagesHolder.push(new ImageDisplayer('./assets/img/transf2.png', -1 , -1, 44, 23));
-	imagesHolder.push(new ImageDisplayer('./assets/img/transf3.png', -1 , -1, 44, 23));
-	imagesHolder.push(new ImageDisplayer('./assets/img/transf4.png', -1 , -1, 44, 23));
-	//ligne et orbe 33-34
-	imagesHolder.push(new ImageDisplayer('./assets/img/lignes1.png',-1 , -1, 44, 23));
-	imagesHolder.push(new ImageDisplayer('./assets/img/orbe1.png',-1 , -1, 44, 23));
-	//masse noire 35-40
-	imagesHolder.push(new ImageDisplayer('./assets/img/massenoire1.png', 0 , -1, 44, 22));
-	imagesHolder.push(new ImageDisplayer('./assets/img/massenoire2.png', 0 , -1, 44, 22));
-	imagesHolder.push(new ImageDisplayer('./assets/img/massenoire3.png', 0 , -1, 44, 22));
-	imagesHolder.push(new ImageDisplayer('./assets/img/massenoire4.png', 0 , -1, 44, 22));
-	imagesHolder.push(new ImageDisplayer('./assets/img/massenoire5.png', 0 , -1, 44, 22));
-	imagesHolder.push(new ImageDisplayer('./assets/img/massenoire6.png', 0 , -1, 44, 22));
-	//ligne blanche 41
-	imagesHolder.push(new ImageDisplayer('./assets/img/lignes3.png', -1 , -1, 45, 22));
-	//gardien 42
-	imagesHolder.push(new ImageDisplayer('./assets/img/gardien.png', -1 , -1, 45, 22));
-	//fleurs 2EME PARTIE 43-46
-	imagesHolder.push(new ImageDisplayer('./assets/img/fleur1.png', -17 , 7, 2, 2));
-	imagesHolder.push(new ImageDisplayer('./assets/img/fleur1.png', -4 , 6, 2, 2));
-	imagesHolder.push(new ImageDisplayer('./assets/img/fleur1.png', 5 , 8, 2, 2));
-	imagesHolder.push(new ImageDisplayer('./assets/img/fleur1.png', 18 , 8, 2, 2));
-	//pousses 2EME PARTIE 47-50
-	imagesHolder.push(new ImageDisplayer('./assets/img/pousse1.png', -17 , 6, 7, 7));
-	imagesHolder.push(new ImageDisplayer('./assets/img/pousse1.png', -4 , 5, 7, 7));
-	imagesHolder.push(new ImageDisplayer('./assets/img/pousse1.png', 5 , 7, 7, 7));
-	imagesHolder.push(new ImageDisplayer('./assets/img/pousse1.png', 18 , 7, 6, 6));
-	//pousses 2EME PARTIE 51-55
-	imagesHolder.push(new ImageDisplayer('./assets/img/pousse_partie2_1.png', -1 , -1, 45, 22));
-	imagesHolder.push(new ImageDisplayer('./assets/img/pousse_partie2_2.png', -1 , -1, 45, 22));
-	imagesHolder.push(new ImageDisplayer('./assets/img/pousse_partie2_3.png', -1 , -1, 45, 22));
-	imagesHolder.push(new ImageDisplayer('./assets/img/pousse_partie2_4.png', -1 , -1, 45, 22));
-	imagesHolder.push(new ImageDisplayer('./assets/img/pousse_partie2_5.png', -1 , -1, 45, 22));
-	//oiseaux 2EME PARTIE 56-58
-	imagesHolder.push(new ImageDisplayer('./assets/img/oiseaux_partie2_1.png', -1 , -1, 45, 22));
-	imagesHolder.push(new ImageDisplayer('./assets/img/oiseaux_partie2_2.png', -1 , -1, 45, 22));
-	imagesHolder.push(new ImageDisplayer('./assets/img/oiseaux_partie2_3.png', -1 , -1, 45, 22));
-	//ciel 59-65
-	imagesHolder.push(new ImageDisplayer('./assets/img/orbe2.png', -13 , -8, 3, 3));
-	imagesHolder.push(new ImageDisplayer('./assets/img/orbe2.png', 2 , -9, 3, 3));
-	imagesHolder.push(new ImageDisplayer('./assets/img/orbe2.png', 12 , -9, 3, 3));
-	imagesHolder.push(new ImageDisplayer('./assets/img/nuage_partie2_1.png', -1 , -1, 45, 22));
-	imagesHolder.push(new ImageDisplayer('./assets/img/nuage_partie2_2.png', -1 , -1, 45, 22));
-	imagesHolder.push(new ImageDisplayer('./assets/img/oiseaux_partie3_1.png', -1 , -1, 45, 22));
-	imagesHolder.push(new ImageDisplayer('./assets/img/oiseaux_partie3_2.png', -1 , -1, 45, 22));
-	//Fleur finale 66-68
-	imagesHolder.push(new ImageDisplayer('./assets/img/fleur1.png', 0 , 8, 1, 1));
-	imagesHolder.push(new ImageDisplayer('./assets/img/fleur1.png', 0 , 8, 3, 3));
-	imagesHolder.push(new ImageDisplayer('./assets/img/fleur1.png', 0 , 8, 5, 5));
-	
-}
+let op = 0.01;
 
 function setup(){
 	createCanvas (window.innerWidth, window.innerHeight, WEBGL);
@@ -113,11 +23,10 @@ function setup(){
 	view2 = new mont2();
 	lignes2 = new lignes2();
 	view3 = new mont3();
-
-	brouilli = new Brouilli();
-		
+	brouilli = new Brouilli();	
 	sequencer = new Sequencer(audioPath, 40, false);
 	
+
 	sequencer.registerSequence({
 		name : "montvisibility",
 		start : 1,
@@ -136,18 +45,18 @@ function setup(){
 		name : "mont",
 		start : 1,
 		onStart : () => {
-			console.log("start");
+			
 			/*brouilli.isVisible = true;*/
 		},
 		stop : 16,
 		onStop : () => {
-			console.log("stop");
+			
 			view.moveEnable = false;
 		},
 		steps : [1+1/2], 
 		onStep : (event)=>{
 			amp += 0.5;
-			console.log(event);
+			
 		}
 	}); //mont
 		
@@ -159,9 +68,6 @@ function setup(){
 			
 		},
 		stop : 10,
-		onStop : () => {
-			console.log("stop");
-		},
 			
 		steps : [1+1/2], 
 		onStep : (event)=>{
@@ -176,9 +82,7 @@ function setup(){
 			lights2.isVisible = true;
 		},
 		stop : 11,
-		onStop : () => {
-			console.log("stop");
-		},
+		
 		steps : [1+1/2], 
 		onStep : (event)=>{
 			lights2.isVisible = false;
@@ -192,9 +96,7 @@ function setup(){
 			lights1.isVisible = true;
 		},
 		stop : 14,
-		onStop : () => {
-			console.log("stop");
-		},
+		
 		steps : [1+1/2], 
 		onStep : (event)=>{
 			lights1.isVisible = false;
@@ -208,9 +110,7 @@ function setup(){
 			lights2.isVisible = true;
 		},
 		stop : 15,
-		onStop : () => {
-			console.log("stop");
-		},
+		
 		steps : [1+1/2], 
 		onStep : (event)=>{
 			lights2.isVisible = false;
@@ -221,28 +121,25 @@ function setup(){
 		name : "fleur1",
 		start : 17+1/2,
 		onStart : () => {
-			imagesHolder[0].isVisible = true ;
+			document.querySelector("#fleur1").style.opacity= 1;
 		},
 	
 		stop : 20+1/2,
 		onStop : () => {
-			console.log("stop");
-			imagesHolder[0].isVisible = false ;
-		},
-		
-	}); //fleur 1
+			document.querySelector("#fleur1").style.opacity= 0;
+			},
+		}); //fleur 1
 	
 	sequencer.registerSequence({
 		name : "fleur2",
 		start : 18+1/2,
 		onStart : () => {
-			imagesHolder[1].isVisible = true ;
+			document.querySelector("#fleur2").style.opacity= 1;
 		},
 	
 		stop : 22,
 		onStop : () => {
-			console.log("stop");
-			imagesHolder[1].isVisible = false ;
+			document.querySelector("#fleur2").style.opacity= 0;
 		},
 		}); //fleur 2
 		
@@ -250,13 +147,12 @@ function setup(){
 		name : "fleur3",
 		start : 19+1/2,
 		onStart : () => {
-			imagesHolder[2].isVisible = true ;
+			document.querySelector("#fleur3").style.opacity= 1;
 		},
 	
 		stop :22+1/2,
 		onStop : () => {
-			console.log("stop");
-			imagesHolder[2].isVisible = false ;
+			document.querySelector("#fleur3").style.opacity= 0;
 		},
 		}); //fleur 3
 			
@@ -264,13 +160,12 @@ function setup(){
 		name : "fleur4",
 		start : 20+1/2,
 		onStart : () => {
-			imagesHolder[3].isVisible = true ;
+			document.querySelector("#fleur4").style.opacity= 1;
 		},
 	
 		stop : 23+1/2,
 		onStop : () => {
-			console.log("stop");
-			imagesHolder[3].isVisible = false ;
+			document.querySelector("#fleur4").style.opacity= 0;
 		},	
 	}); //fleur 4
 	
@@ -278,13 +173,12 @@ function setup(){
 		name : "pousse1",
 		start : 21+1/2,
 		onStart : () => {
-			imagesHolder[4].isVisible = true ;
+			document.querySelector("#pousse1").style.opacity= 1;
 		},
 	
 		stop : 24+1/2,
 		onStop : () => {
-			console.log("stop");
-			imagesHolder[4].isVisible = false ;
+			document.querySelector("#pousse1").style.opacity= 0;
 		},	
 	}); //pousse1
 	
@@ -292,13 +186,12 @@ function setup(){
 		name : "pousse2",
 		start : 23,
 		onStart : () => {
-			imagesHolder[5].isVisible = true ;
+			document.querySelector("#pousse2").style.opacity= 1;
 		},
 	
 		stop : 24+1/2,
 		onStop : () => {
-			console.log("stop");
-			imagesHolder[5].isVisible = false ;
+		document.querySelector("#pousse2").style.opacity= 0;
 		},	
 	}); //pousse2
 	
@@ -306,13 +199,12 @@ function setup(){
 		name : "pousse3",
 		start : 23+1/2,
 		onStart : () => {
-			imagesHolder[6].isVisible = true ;
+			document.querySelector("#pousse3").style.opacity= 1;
 		},
 	
 		stop : 24+1/2,
 		onStop : () => {
-			console.log("stop");
-			imagesHolder[6].isVisible = false ;
+			document.querySelector("#pousse3").style.opacity= 0;
 		},	
 	}); //pousse3
 	
@@ -320,13 +212,12 @@ function setup(){
 		name : "pousse4",
 		start : 24+1/2,
 		onStart : () => {
-			imagesHolder[7].isVisible = true ;
+			document.querySelector("#pousse4").style.opacity= 1;
 		},
 	
 		stop : 24+1/2,
 		onStop : () => {
-			console.log("stop");
-			imagesHolder[7].isVisible = false ;
+			document.querySelector("#pousse4").style.opacity= 0;
 		},	
 	}); //pousse4
 	
@@ -334,13 +225,12 @@ function setup(){
 		name : "pousse5",
 		start : 25+1/2,
 		onStart : () => {
-			imagesHolder[8].isVisible = true ;
+			document.querySelector("#pousse5").style.opacity= 1;
 		},
 	
 		stop : 26+1/2,
 		onStop : () => {
-			console.log("stop");
-			imagesHolder[8].isVisible = false ;
+			document.querySelector("#pousse5").style.opacity= 0;
 		},	
 	}); //pousse5
 	
@@ -348,13 +238,12 @@ function setup(){
 		name : "pousse6",
 		start : 25+1/2,
 		onStart : () => {
-			imagesHolder[9].isVisible = true ;
+			document.querySelector("#pousse6").style.opacity= 1;
 		},
 	
 		stop : 26+1/2,
 		onStop : () => {
-			console.log("stop");
-			imagesHolder[9].isVisible = false ;
+			document.querySelector("#pousse6").style.opacity= 0;
 		},	
 	}); //pousse6
 	
@@ -362,13 +251,12 @@ function setup(){
 		name : "pousse7",
 		start : 25+1/2,
 		onStart : () => {
-			imagesHolder[10].isVisible = true ;
+			document.querySelector("#pousse7").style.opacity= 1;
 		},
 	
 		stop : 26+1/2,
 		onStop : () => {
-			console.log("stop");
-			imagesHolder[10].isVisible = false ;
+			document.querySelector("#pousse7").style.opacity= 0;
 		},	
 	}); //pousse7
 	
@@ -376,13 +264,12 @@ function setup(){
 		name : "pousse8",
 		start : 25+1/2,
 		onStart : () => {
-			imagesHolder[11].isVisible = true ;
+			document.querySelector("#pousse8").style.opacity= 1;
 		},
 	
 		stop : 26+1/2,
 		onStop : () => {
-			console.log("stop");
-			imagesHolder[11].isVisible = false ;
+			document.querySelector("#pousse8").style.opacity= 0;
 		},	
 	}); //pousse8
 	
@@ -390,13 +277,12 @@ function setup(){
 		name : "pousse9",
 		start : 27+1/2,
 		onStart : () => {
-			imagesHolder[12].isVisible = true ;
+			document.querySelector("#pousse9").style.opacity= 1;
 		},
 	
-		stop : 28+1/2,
+		stop : 33,
 		onStop : () => {
-			console.log("stop");
-			imagesHolder[12].isVisible = false ;
+			document.querySelector("#pousse9").style.opacity= 0;
 		},	
 	}); //pousse9
 	
@@ -404,13 +290,12 @@ function setup(){
 		name : "pousse10",
 		start : 27+1/2,
 		onStart : () => {
-			imagesHolder[13].isVisible = true ;
+			document.querySelector("#pousse10").style.opacity= 1;
 		},
 	
-		stop : 28+1/2,
+		stop : 33,
 		onStop : () => {
-			console.log("stop");
-			imagesHolder[13].isVisible = false ;
+			document.querySelector("#pousse10").style.opacity= 0;
 		},	
 	}); //pousse10
 	
@@ -418,13 +303,12 @@ function setup(){
 		name : "pousse11",
 		start : 27+1/2,
 		onStart : () => {
-			imagesHolder[14].isVisible = true ;
+			document.querySelector("#pousse11").style.opacity= 1;
 		},
 	
-		stop : 28+1/2,
+		stop : 33,
 		onStop : () => {
-			console.log("stop");
-			imagesHolder[14].isVisible = false ;
+			document.querySelector("#pousse11").style.opacity= 0;
 		},	
 	}); //pousse11
 	
@@ -432,13 +316,12 @@ function setup(){
 		name : "pousse12",
 		start : 27+1/2,
 		onStart : () => {
-			imagesHolder[15].isVisible = true ;
+			document.querySelector("#pousse12").style.opacity= 1;
 		},
 	
-		stop : 28+1/2,
+		stop : 33,
 		onStop : () => {
-			console.log("stop");
-			imagesHolder[15].isVisible = false ;
+			document.querySelector("#pousse12").style.opacity= 0;
 		},	
 	}); //pousse12
 	
@@ -446,13 +329,13 @@ function setup(){
 		name : "pousse13",
 		start : 29+1/2,
 		onStart : () => {
-			imagesHolder[16].isVisible = true ;
+			document.querySelector("#pousse13").style.opacity= 1;
 		},
 	
 		stop : 33,
 		onStop : () => {
-			console.log("stop");
-			imagesHolder[16].isVisible = false ;
+			document.querySelector("#pousse13").style.opacity= 0;
+
 		},	
 	}); //pousse13
 	
@@ -460,13 +343,13 @@ function setup(){
 		name : "pousse14",
 		start : 29+1/2,
 		onStart : () => {
-			imagesHolder[17].isVisible = true ;
+			document.querySelector("#pousse14").style.opacity= 1;
 		},
 	
 		stop : 33,
 		onStop : () => {
-			console.log("stop");
-			imagesHolder[17].isVisible = false ;
+			document.querySelector("#pousse14").style.opacity= 0;
+
 		},	
 	}); //pousse14
 	
@@ -474,13 +357,12 @@ function setup(){
 		name : "pousse15",
 		start : 29+1/2,
 		onStart : () => {
-			imagesHolder[18].isVisible = true ;
+			document.querySelector("#pousse15").style.opacity= 1;
 		},
 	
 		stop : 33,
 		onStop : () => {
-			console.log("stop");
-			imagesHolder[18].isVisible = false ;
+			document.querySelector("#pousse15").style.opacity= 0;
 		},	
 	}); //pousse15
 	
@@ -488,13 +370,12 @@ function setup(){
 		name : "pousse16",
 		start : 29+1/2,
 		onStart : () => {
-			imagesHolder[19].isVisible = true ;
+			document.querySelector("#pousse16").style.opacity= 1;
 		},
 	
 		stop : 33,
 		onStop : () => {
-			console.log("stop");
-			imagesHolder[19].isVisible = false ;
+			document.querySelector("#pousse16").style.opacity= 0;
 		},	
 	}); //pousse16
 	
@@ -504,7 +385,7 @@ function setup(){
 		onStart : () => {
 			brouilli.isVisible = true;
 		},
-		stop : 50,
+		stop : 49,
 		onStop : () => {
 			brouilli.isVisible = false;
 			}
@@ -528,12 +409,12 @@ function setup(){
 		name : "oiseaux1",
 		start : 51,
 		onStart : () => {
-			imagesHolder[20].isVisible = true ;
+			document.querySelector("#oiseaux1").style.opacity= 1;
 		},
 	
-		stop : 51,
+		stop : 57,
 		onStop : () => {
-			imagesHolder[20].isVisible = false ;
+			document.querySelector("#oiseaux1").style.opacity= 0;
 		},
 	});//oiseaux1
 	
@@ -541,12 +422,12 @@ function setup(){
 		name : "oiseaux2",
 		start : 52,
 		onStart : () => {
-			imagesHolder[21].isVisible = true ;
+			document.querySelector("#oiseaux2").style.opacity= 1;
 		},
 	
-		stop : 52,
+		stop : 57,
 		onStop : () => {
-			imagesHolder[21].isVisible = false ;
+			document.querySelector("#oiseaux2").style.opacity= 0;
 		},
 	});//oiseaux2
 	
@@ -554,12 +435,12 @@ function setup(){
 		name : "nuage1",
 		start : 52,
 		onStart : () => {
-			imagesHolder[25].isVisible = true ;
+			document.querySelector("#nuage1").style.opacity= 1;
 		},
 	
-		stop : 52,
+		stop : 63,
 		onStop : () => {
-			imagesHolder[25].isVisible = false ;
+			document.querySelector("#nuage1").style.opacity= 0;
 		},
 	});//nuage1
 	
@@ -567,12 +448,12 @@ function setup(){
 		name : "oiseaux3",
 		start : 53,
 		onStart : () => {
-			imagesHolder[22].isVisible = true ;
+			document.querySelector("#oiseaux3").style.opacity= 1;
 		},
 	
-		stop : 53,
+		stop : 57,
 		onStop : () => {
-			imagesHolder[22].isVisible = false ;
+			document.querySelector("#oiseaux3").style.opacity= 0;
 		},
 	});//oiseaux3
 	
@@ -580,12 +461,12 @@ function setup(){
 		name : "nuage2",
 		start : 53,
 		onStart : () => {
-			imagesHolder[26].isVisible = true ;
+			document.querySelector("#nuage2").style.opacity= 1;
 		},
 	
-		stop : 53,
+		stop : 63,
 		onStop : () => {
-			imagesHolder[26].isVisible = false ;
+			document.querySelector("#nuage2").style.opacity= 0;
 		},
 	});//nuage2
 	
@@ -593,12 +474,12 @@ function setup(){
 		name : "oiseaux4",
 		start : 54,
 		onStart : () => {
-			imagesHolder[23].isVisible = true ;
+			document.querySelector("#oiseaux4").style.opacity= 1;
 		},
 	
-		stop : 55,
+		stop : 57,
 		onStop : () => {
-			imagesHolder[23].isVisible = false ;
+			document.querySelector("#oiseaux4").style.opacity= 0;
 		},
 	});//oiseaux4
 	
@@ -606,12 +487,12 @@ function setup(){
 		name : "nuage3",
 		start : 54,
 		onStart : () => {
-			imagesHolder[27].isVisible = true ;
+			document.querySelector("#nuage3").style.opacity= 1;
 		},
 	
-		stop : 55,
+		stop : 63,
 		onStop : () => {
-			imagesHolder[27].isVisible = false ;
+			document.querySelector("#nuage3").style.opacity= 0;
 		},
 	});//nuage3
 	
@@ -619,12 +500,12 @@ function setup(){
 		name : "oiseaux5",
 		start : 56,
 		onStart : () => {
-			imagesHolder[24].isVisible = true ;
+			document.querySelector("#oiseaux5").style.opacity= 1;
 		},
 	
 		stop : 57,
 		onStop : () => {
-			imagesHolder[24].isVisible = false ;
+			document.querySelector("#oiseaux5").style.opacity= 0;
 		},
 	});//oiseaux5
 
@@ -632,12 +513,12 @@ function setup(){
 		name : "nuage4",
 		start : 56,
 		onStart : () => {
-			imagesHolder[28].isVisible = true ;
+			document.querySelector("#nuage4").style.opacity= 1;
 		},
 	
 		stop : 63,
 		onStop : () => {
-			imagesHolder[28].isVisible = false ;
+			document.querySelector("#nuage4").style.opacity= 0;
 		},
 	});//nuage4
 	
@@ -645,12 +526,12 @@ function setup(){
 		name : "transf1",
 		start : 58,
 		onStart : () => {
-			imagesHolder[29].isVisible = true ;
+			document.querySelector("#trans1").style.opacity= 1;
 		},
 	
 		stop : 60,
 		onStop : () => {
-			imagesHolder[29].isVisible = false ;
+			document.querySelector("#trans1").style.opacity= 0;
 		},
 	});//transf1
 	
@@ -658,12 +539,12 @@ function setup(){
 		name : "transf2",
 		start : 61,
 		onStart : () => {
-			imagesHolder[30].isVisible = true ;
+			document.querySelector("#trans2").style.opacity= 1;
 		},
 	
 		stop : 63,
 		onStop : () => {
-			imagesHolder[30].isVisible = false ;
+			document.querySelector("#trans2").style.opacity= 0;
 		},
 	});//transf2
 	
@@ -671,12 +552,12 @@ function setup(){
 		name : "transf3",
 		start : 64,
 		onStart : () => {
-			imagesHolder[31].isVisible = true ;
+			document.querySelector("#trans3").style.opacity= 1;
 		},
 	
 		stop : 66,
 		onStop : () => {
-			imagesHolder[31].isVisible = false ;
+			document.querySelector("#trans3").style.opacity= 0;
 		},
 	});//transf3
 	
@@ -684,12 +565,12 @@ function setup(){
 		name : "transf4",
 		start : 67,
 		onStart : () => {
-			imagesHolder[32].isVisible = true ;
+			document.querySelector("#trans4").style.opacity= 1;
 		},
 	
 		stop : 68,
 		onStop : () => {
-			imagesHolder[32].isVisible = false ;
+			document.querySelector("#trans4").style.opacity= 0;
 		},
 	});//transf4
 	
@@ -697,12 +578,12 @@ function setup(){
 		name : "lignes1",
 		start : 69,
 		onStart : () => {
-			imagesHolder[33].isVisible = true ;
+			document.querySelector("#lignes1").style.opacity= 1;
 		},
 	
 		stop : 70,
 		onStop : () => {
-			imagesHolder[33].isVisible = false ;
+			document.querySelector("#lignes1").style.opacity= 0;
 		},
 	});//lignes1
 	
@@ -736,14 +617,14 @@ function setup(){
 		name : "orbe1a",
 		start : 73+1/2,
 		onStart : () => {
-			imagesHolder[34].isVisible = true ;
+			document.querySelector("#orbe1").style.opacity= 1;
 		},
 	
 		stop : 73+1/2,
 					
 		steps : [1+3/24], 
 		onStep : (event)=>{
-			imagesHolder[34].isVisible = false;
+			document.querySelector("#orbe1").style.opacity= 0;
 		},
 	});//orbe1a
 	
@@ -751,14 +632,14 @@ function setup(){
 		name : "orbe1b",
 		start : 74,
 		onStart : () => {
-			imagesHolder[34].isVisible = true ;
+			document.querySelector("#orbe1").style.opacity= 1;
 		},
 	
 		stop : 74,
 					
 		steps : [1+6/24], 
 		onStep : (event)=>{
-			imagesHolder[34].isVisible = false;
+			document.querySelector("#orbe1").style.opacity= 0;
 		},
 	});//orbe1b
 	
@@ -766,29 +647,29 @@ function setup(){
 		name : "orbe2a",
 		start : 77+1/2,
 		onStart : () => {
-			imagesHolder[34].isVisible = true ;
+			document.querySelector("#orbe1").style.opacity= 1;
 		},
 	
 		stop : 77+1/2,
 					
 		steps : [1+3/24], 
 		onStep : (event)=>{
-			imagesHolder[34].isVisible = false;
+			document.querySelector("#orbe1").style.opacity= 0;
 		},
 	});//orbe2a
 	
 	sequencer.registerSequence({
-		name : "orbe2c",
+		name : "orbe2b",
 		start : 78,
 		onStart : () => {
-			imagesHolder[34].isVisible = true ;
+			document.querySelector("#orbe1").style.opacity= 1;
 		},
 	
 		stop : 78,
 					
 		steps : [1+3/24], 
 		onStep : (event)=>{
-			imagesHolder[34].isVisible = false;
+			document.querySelector("#orbe1").style.opacity= 0;
 		},
 	});//orbe2c
 	
@@ -796,14 +677,14 @@ function setup(){
 		name : "orbe3a",
 		start : 81+1/2,
 		onStart : () => {
-			imagesHolder[34].isVisible = true ;
+			document.querySelector("#orbe1").style.opacity= 1;
 		},
 	
 		stop : 81+1/2,
 					
 		steps : [1+3/24], 
 		onStep : (event)=>{
-			imagesHolder[34].isVisible = false;
+			document.querySelector("#orbe1").style.opacity= 0;
 		},
 	});//orbe3a
 	
@@ -811,14 +692,14 @@ function setup(){
 		name : "orbe3b",
 		start : 82,
 		onStart : () => {
-			imagesHolder[34].isVisible = true ;
+			document.querySelector("#orbe1").style.opacity= 1;
 		},
 	
 		stop : 82,
 					
 		steps : [1+6/24], 
 		onStep : (event)=>{
-			imagesHolder[34].isVisible = false;
+			document.querySelector("#orbe1").style.opacity= 0;
 		},
 	});//orbe3b
 	
@@ -826,12 +707,12 @@ function setup(){
 		name : "masse1",
 		start : 82+1/2,
 		onStart : () => {
-			imagesHolder[35].isVisible = true ;
+			document.querySelector("#masse1").style.opacity= 1;
 		},
 	
-		stop : 83,
+		stop : 88,
 		onStop : () => {
-			imagesHolder[35].isVisible = false ;
+			document.querySelector("#masse1").style.opacity= 0;
 		}
 	});//masse1
 	
@@ -839,12 +720,12 @@ function setup(){
 		name : "masse2",
 		start : 84,
 		onStart : () => {
-			imagesHolder[36].isVisible = true ;
+			document.querySelector("#masse2").style.opacity= 1;
 		},
 	
-		stop : 84,
+		stop : 88,
 		onStop : () => {
-			imagesHolder[36].isVisible = false ;
+			document.querySelector("#masse2").style.opacity= 0;
 		}
 	});//masse2
 	
@@ -852,12 +733,12 @@ function setup(){
 		name : "masse3",
 		start : 85,
 		onStart : () => {
-			imagesHolder[37].isVisible = true ;
+			document.querySelector("#masse3").style.opacity= 1;
 		},
 	
-		stop : 85,
+		stop : 88,
 		onStop : () => {
-			imagesHolder[37].isVisible = false ;
+			document.querySelector("#masse3").style.opacity= 0;
 		}
 	});//masse3
 	
@@ -865,12 +746,12 @@ function setup(){
 		name : "masse4",
 		start : 86,
 		onStart : () => {
-			imagesHolder[38].isVisible = true ;
+			document.querySelector("#masse4").style.opacity= 1;
 		},
 	
-		stop : 86,
+		stop : 88,
 		onStop : () => {
-			imagesHolder[38].isVisible = false ;
+			document.querySelector("#masse4").style.opacity= 0;
 		}
 	});//masse4
 	
@@ -878,12 +759,12 @@ function setup(){
 		name : "masse5",
 		start : 87,
 		onStart : () => {
-			imagesHolder[39].isVisible = true ;
+			document.querySelector("#masse5").style.opacity= 1;
 		},
 	
-		stop : 87,
+		stop : 88,
 		onStop : () => {
-			imagesHolder[39].isVisible = false ;
+			document.querySelector("#masse5").style.opacity= 0;
 		}
 	});//masse5
 	
@@ -891,32 +772,20 @@ function setup(){
 		name : "masse6",
 		start : 88,
 		onStart : () => {
-			imagesHolder[40].isVisible = true ;
+			document.querySelector("#masse6").style.opacity= 1;
 		},
 	
 		stop : 88,
 		onStop : () => {
-			imagesHolder[40].isVisible = false ;
+			document.querySelector("#masse6").style.opacity= 0;
 		}
 	});//masse6
 	
 	//2EME PARTIE SEQUENCES NOIRES
-	sequencer.registerSequence({
-		name : "lignes3",
-		start : 90,
-		onStart : () => {
-			imagesHolder[41].isVisible = true ;
-		},
-	
-		stop : 90,
-		onStop : () => {
-			imagesHolder[41].isVisible = false ;
-		}
-	});//lignes3
 	
 	sequencer.registerSequence({
 		name : "mont3visibility",
-		start : 91,
+		start : 90,
 		onStart : () => {
 			view3.isVisible = true;
 		
@@ -931,19 +800,14 @@ function setup(){
 	sequencer.registerSequence({
 		name : "mont3",
 		start : 91,
-		onStart : () => {
-			console.log("start");
-			
-		},
+		
 		stop : 95,
 		onStop : () => {
-			console.log("stop");
 			view3.moveEnable = false;
 		},
 		steps : [1+1/2], 
 		onStep : (event)=>{
 			amp += 0.5;
-			console.log(event);
 		}
 	}); //mont3
 	
@@ -951,36 +815,31 @@ function setup(){
 		name : "lignes3suite",
 		start : 96,
 		onStart : () => {
-			imagesHolder[41].isVisible = true ;
+			document.querySelector("#lignes3").style.opacity= 1;
 		},
 	
 		stop : 156,
 		onStop : () => {
-			imagesHolder[41].isVisible = false ;
+			document.querySelector("#lignes3").style.opacity= 0;
 		}
 	});//lignes3suite
 	
 	sequencer.registerSequence({
 		name : "gardiens",
 		start : 91,
-		onStart : () => {
-			imagesHolder[42].isVisible = true ;
-		},
-		stop : 155,
+	
+		stop : 155, //64,
 		onStop : () => {
-			imagesHolder[42].isVisible = false ;
+			document.querySelector("#gardiens").style.opacity= 0;
 		},
-		steps : (new Array(24)).fill(1).map((n, k)=>n + k / 10), //fluidité 
+		
+		steps : [1+1/24], //fluidité 
 		onStep : (event)=>{
-			let amt = event.amount*5; //vitesse
-			//amt = min(max(amt, 0), 1)
-			if(amt > 1){
-				amt = 1;
-			}
-			if(amt < 0){
-				amt = 0;
-			}
-			imagesHolder[42].y = lerp(20, -1, amt) // 0 >>> 1 //hauteur
+			
+			let o = event.amount * 2 ; 
+			o = o * o * 2 ;
+			o = min(o, 1);
+			document.querySelector("#gardiens").style.opacity= o;
 		}
 	});//gardiens anim
 	
@@ -988,13 +847,12 @@ function setup(){
 		name : "fleur1bis",
 		start : 105+1/2,
 		onStart : () => {
-			imagesHolder[43].isVisible = true ;
+			document.querySelector("#fleur1bis").style.opacity= 1;
 		},
 	
 		stop : 108+1/2,
 		onStop : () => {
-			console.log("stop");
-			imagesHolder[43].isVisible = false ;
+			document.querySelector("#fleur1bis").style.opacity= 0;
 		},	
 	}); //fleur 1 2EME PARTIE
 	
@@ -1002,13 +860,12 @@ function setup(){
 		name : "fleur2bis",
 		start : 106+1/2,
 		onStart : () => {
-			imagesHolder[44].isVisible = true ;
+			document.querySelector("#fleur2bis").style.opacity= 1;
 		},
 	
 		stop : 110,
 		onStop : () => {
-			console.log("stop");
-			imagesHolder[44].isVisible = false ;
+			document.querySelector("#fleur2bis").style.opacity= 0;
 		},
 		}); //fleur 2 2EME PARTIE
 		
@@ -1016,13 +873,12 @@ function setup(){
 		name : "fleur3bis",
 		start : 107+1/2,
 		onStart : () => {
-			imagesHolder[45].isVisible = true ;
+			document.querySelector("#fleur3bis").style.opacity= 1;
 		},
 	
 		stop : 110+1/2,
 		onStop : () => {
-			console.log("stop");
-			imagesHolder[45].isVisible = false ;
+			document.querySelector("#fleur3bis").style.opacity= 0;
 		},
 		}); //fleur 3 2EME PARTIE
 			
@@ -1030,13 +886,12 @@ function setup(){
 		name : "fleur4bis",
 		start : 108+1/2,
 		onStart : () => {
-			imagesHolder[46].isVisible = true ;
+			document.querySelector("#fleur4bis").style.opacity= 1;
 		},
 	
 		stop : 111+1/2,
 		onStop : () => {
-			console.log("stop");
-			imagesHolder[46].isVisible = false ;
+			document.querySelector("#fleur4bis").style.opacity= 0;
 		},	
 	}); //fleur 4 2EME PARTIE
 	
@@ -1044,13 +899,12 @@ function setup(){
 		name : "pousse1bis",
 		start : 109+1/2,
 		onStart : () => {
-			imagesHolder[47].isVisible = true ;
+			document.querySelector("#pousse1bis").style.opacity= 1;
 		},
 	
 		stop : 113,
 		onStop : () => {
-			console.log("stop");
-			imagesHolder[47].isVisible = false ;
+			document.querySelector("#pousse1bis").style.opacity= 0;
 		},	
 	}); //pousse1 2EME PARTIE
 	
@@ -1058,13 +912,13 @@ function setup(){
 		name : "pousse2bis",
 		start : 111,
 		onStart : () => {
-			imagesHolder[48].isVisible = true ;
+			document.querySelector("#pousse2bis").style.opacity= 1;
 		},
 	
 		stop : 113,
 		onStop : () => {
-			console.log("stop");
-			imagesHolder[48].isVisible = false ;
+			document.querySelector("#pousse2bis").style.opacity= 0;
+
 		},	
 	}); //pousse2 2EME PARTIE
 
@@ -1072,13 +926,12 @@ function setup(){
 		name : "pousse3bis",
 		start : 111+1/2,
 		onStart : () => {
-			imagesHolder[49].isVisible = true ;
+			document.querySelector("#pousse3bis").style.opacity= 1;
 		},
 	
 		stop : 113,
 		onStop : () => {
-			console.log("stop");
-			imagesHolder[49].isVisible = false ;
+			document.querySelector("#pousse3bis").style.opacity= 0;
 		},	
 	}); //pousse3 2EME PARTIE
 
@@ -1086,13 +939,13 @@ function setup(){
 		name : "pousse4bis",
 		start : 112+1/2,
 		onStart : () => {
-			imagesHolder[50].isVisible = true ;
+			document.querySelector("#pousse4bis").style.opacity= 1;
 		},
 	
 		stop : 113,
 		onStop : () => {
-			console.log("stop");
-			imagesHolder[50].isVisible = false ;
+			document.querySelector("#pousse4bis").style.opacity= 0;
+
 		},	
 	}); //pousse4 2EME PARTIE
 
@@ -1100,13 +953,13 @@ function setup(){
 	name : "pousse5bis",
 		start : 114,
 		onStart : () => {
-			imagesHolder[51].isVisible = true ;
+			document.querySelector("#pousse5bis").style.opacity= 1;
 		},
 	
 		stop : 154,
 		onStop : () => {
-			console.log("stop");
-			imagesHolder[51].isVisible = false ;
+			document.querySelector("#pousse5bis").style.opacity= 0;
+
 		},	
 	}); //pousse5 2EME PARTIE
 
@@ -1114,13 +967,12 @@ function setup(){
 		name : "pousse6bis",
 		start : 115,
 		onStart : () => {
-			imagesHolder[52].isVisible = true ;
+			document.querySelector("#pousse6bis").style.opacity= 1;
 		},
 	
 		stop : 153,
 		onStop : () => {
-			console.log("stop");
-			imagesHolder[52].isVisible = false ;
+			document.querySelector("#pousse6bis").style.opacity= 0;
 		},	
 	}); //pousse6 2EME PARTIE
 
@@ -1128,13 +980,13 @@ function setup(){
 		name : "pousse7bis",
 		start : 116,
 		onStart : () => {
-			imagesHolder[53].isVisible = true ;
+			document.querySelector("#pousse7bis").style.opacity= 1;
 		},
 	
 		stop : 153,
 		onStop : () => {
-			console.log("stop");
-			imagesHolder[53].isVisible = false ;
+			document.querySelector("#pousse7bis").style.opacity= 0;
+
 		},	
 	}); //pousse7 2EME PARTIE
 
@@ -1142,13 +994,12 @@ function setup(){
 		name : "pousse8bis",
 		start : 117,
 		onStart : () => {
-			imagesHolder[54].isVisible = true ;
+			document.querySelector("#pousse8bis").style.opacity= 1;
 		},
 	
 		stop : 153,
 		onStop : () => {
-			console.log("stop");
-			imagesHolder[54].isVisible = false ;
+			document.querySelector("#pousse8bis").style.opacity= 0;
 		},	
 	}); //pousse8 2EME PARTIE
 
@@ -1156,13 +1007,13 @@ function setup(){
 		name : "pousse9bis",
 		start : 118,
 		onStart : () => {
-			imagesHolder[55].isVisible = true ;
+			document.querySelector("#pousse9bis").style.opacity= 1;
 		},
 	
 		stop : 153,
 		onStop : () => {
-			console.log("stop");
-			imagesHolder[55].isVisible = false ;
+			document.querySelector("#pousse9bis").style.opacity= 0;
+
 		},	
 	}); //pousse9 2EME PARTIE
 
@@ -1170,13 +1021,13 @@ function setup(){
 		name : "oiseaux1bis",
 		start : 122,
 		onStart : () => {
-			imagesHolder[56].isVisible = true ;
+			document.querySelector("#oiseaux1bis").style.opacity= 1;
 		},
 	
 		stop : 123,
 		onStop : () => {
-			console.log("stop");
-			imagesHolder[56].isVisible = false ;
+			document.querySelector("#oiseaux1bis").style.opacity= 0;
+
 		},	
 	}); //oiseaux1 2EME PARTIE
 
@@ -1184,13 +1035,13 @@ function setup(){
 		name : "oiseaux2bis",
 		start : 124,
 		onStart : () => {
-			imagesHolder[57].isVisible = true ;
+			document.querySelector("#oiseaux2bis").style.opacity= 1;
 		},
 	
 		stop : 125,
 		onStop : () => {
-			console.log("stop");
-			imagesHolder[57].isVisible = false ;
+			document.querySelector("#oiseaux2bis").style.opacity= 0;
+
 		},	
 	}); //oiseaux2 2EME PARTIE
 
@@ -1198,13 +1049,12 @@ function setup(){
 		name : "oiseaux3bis",
 		start : 126,
 		onStart : () => {
-			imagesHolder[58].isVisible = true ;
+			document.querySelector("#oiseaux3bis").style.opacity= 1;
 		},
 	
 		stop : 150,
 		onStop : () => {
-			console.log("stop");
-			imagesHolder[58].isVisible = false ;
+			document.querySelector("#oiseaux3bis").style.opacity= 0;
 		},	
 	}); //oiseaux3 2EME PARTIE
 
@@ -1212,13 +1062,12 @@ function setup(){
 		name : "orbe1bis",
 		start : 130,
 		onStart : () => {
-			imagesHolder[59].isVisible = true ;
+			document.querySelector("#orbe1bis").style.opacity= 1;		
 		},
 	
 		stop : 147,
 		onStop : () => {
-			console.log("stop");
-			imagesHolder[59].isVisible = false ;
+			document.querySelector("#orbe1bis").style.opacity= 0;
 		},	
 	}); //orbe1 2EME PARTIE
 
@@ -1226,13 +1075,13 @@ function setup(){
 		name : "orbe2bis",
 		start : 134,
 		onStart : () => {
-			imagesHolder[60].isVisible = true ;
+			document.querySelector("#orbe2bis").style.opacity= 1;
 		},
 	
 		stop : 145,
 		onStop : () => {
-			console.log("stop");
-			imagesHolder[60].isVisible = false ;
+			document.querySelector("#orbe2bis").style.opacity= 0;
+
 		},	
 	}); //orbe2 2EME PARTIE
 
@@ -1240,13 +1089,13 @@ function setup(){
 		name : "orbe3bis",
 		start : 138,
 		onStart : () => {
-			imagesHolder[61].isVisible = true ;
+			document.querySelector("#orbe3bis").style.opacity= 1;
 		},
 	
 		stop : 148,
 		onStop : () => {
-			console.log("stop");
-			imagesHolder[61].isVisible = false ;
+			document.querySelector("#orbe3bis").style.opacity= 0;
+
 		},	
 	}); //orbe3 2EME PARTIE
 
@@ -1254,13 +1103,13 @@ function setup(){
 		name : "nuage1bis",
 		start : 139,
 		onStart : () => {
-			imagesHolder[62].isVisible = true ;
+			document.querySelector("#nuage1bis").style.opacity= 1;
 		},
 	
 		stop : 149,
 		onStop : () => {
-			console.log("stop");
-			imagesHolder[62].isVisible = false ;
+			document.querySelector("#nuage1bis").style.opacity= 0;
+
 		},	
 	}); //nuage1 2EME PARTIE
 
@@ -1268,41 +1117,41 @@ function setup(){
 		name : "nuage2bis",
 		start : 139,
 		onStart : () => {
-			imagesHolder[63].isVisible = true ;
+			document.querySelector("#nuage2bis").style.opacity= 1;
 		},
 	
 		stop : 149,
 		onStop : () => {
-			console.log("stop");
-			imagesHolder[63].isVisible = false ;
+			document.querySelector("#nuage2bis").style.opacity= 0;
+
 		},	
 	}); //nuage2 2EME PARTIE
 
 	sequencer.registerSequence({
 		name : "oiseauxdisp1",
-		start : 151,
+		start : 149,
 		onStart : () => {
-			imagesHolder[64].isVisible = true ;
+			document.querySelector("#oiseaux1f").style.opacity= 1;
 		},
 	
 		stop : 151,
 		onStop : () => {
-			console.log("stop");
-			imagesHolder[64].isVisible = false ;
+			document.querySelector("#oiseaux1f").style.opacity= 0;
+
 		},	
 	}); //oiseaux disp 1
 
 	sequencer.registerSequence({
 		name : "oiseauxdisp2",
-		start : 152,
+		start : 150,
 		onStart : () => {
-			imagesHolder[65].isVisible = true ;
+			document.querySelector("#oiseaux2f").style.opacity= 1;
 		},
 	
 		stop : 152,
 		onStop : () => {
-			console.log("stop");
-			imagesHolder[65].isVisible = false ;
+			document.querySelector("#oiseaux2f").style.opacity= 0;
+
 		},	
 	}); //oiseaux disp 2
 
@@ -1310,13 +1159,13 @@ function setup(){
 		name : "fleurfinale",
 		start : 156,
 		onStart : () => {
-			imagesHolder[66].isVisible = true ;
+			document.querySelector("#fleur1f").style.opacity= 1;
 		},
 	
 		stop : 156,
 		onStop : () => {
-			console.log("stop");
-			imagesHolder[66].isVisible = false ;
+			document.querySelector("#fleur1f").style.opacity= 0;
+
 		},	
 	}); //fleur finale1
 	
@@ -1324,13 +1173,12 @@ function setup(){
 		name : "fleurfinale2",
 		start : 157,
 		onStart : () => {
-			imagesHolder[67].isVisible = true ;
+			document.querySelector("#fleur2f").style.opacity= 1;
 		},
 	
 		stop : 157,
 		onStop : () => {
-			console.log("stop");
-			imagesHolder[67].isVisible = false ;
+			document.querySelector("#fleur2f").style.opacity= 0;
 		},	
 	}); //fleur finale2
 	
@@ -1338,21 +1186,69 @@ function setup(){
 		name : "fleurfinale3",
 		start : 158,
 		onStart : () => {
-			imagesHolder[68].isVisible = true ;
+			document.querySelector("#fleur3f").style.opacity= 1;
 		},
 	
 		stop : 158,
 		onStop : () => {
-			console.log("stop");
-			imagesHolder[68].isVisible = false ;
+			document.querySelector("#fleur3f").style.opacity= 0;
+
 		},	
 	}); //fleur finale3
-
-}
-
 	
+	sequencer.registerSequence({
+		name : "text1",
+		start : 162,
+		onStart : () => {
+			document.querySelector("#text1").style.opacity= 1;
 
+		},
+		stop : 171,
+		onStop : () => {
+			document.querySelector("#text1").style.opacity= 0;
+		},
+		}); 
 	
+	sequencer.registerSequence({
+		name : "text2",
+		start : 164,
+		onStart : () => {
+			document.querySelector("#text2").style.opacity= 1;
+
+		},
+		stop : 171,
+		onStop : () => {
+			document.querySelector("#text2").style.opacity= 0;
+		},
+		}); 
+	
+	sequencer.registerSequence({
+		name : "logo1",
+		start : 166,
+		onStart : () => {
+			document.querySelector("#logo1").style.opacity= 1;
+
+		},
+		stop : 171, 
+		onStop : () => {
+			document.querySelector("#logo1").style.opacity= 0;
+		},
+		}); 
+	
+	sequencer.registerSequence({
+		name : "logo2",
+		start : 166,
+		onStart : () => {
+			document.querySelector("#logo2").style.opacity= 1;
+
+		},
+		stop : 171,
+		onStop : () => {
+			document.querySelector("#logo2").style.opacity= 0;
+		},
+		}); 
+	}
+
 	
 function draw(){
 	sequencer.update();
@@ -1364,16 +1260,10 @@ function draw(){
 	view2.draw();
 	lignes2.draw();
 	view3.draw();
-	
-	for(let img of imagesHolder){
-		img.draw();
-	}
-	
 	brouilli.draw();
-}
+	
+	}
 
-
-//CLASSES
 
 function windowResized() {
   resizeCanvas(windowWidth, windowHeight);

@@ -20,7 +20,7 @@ function setup() {
 	//cam.perspective(PI * 0.07, width/height);
 	//calque.setCamera(cam);
 
-	sequencer = new Sequencer(audioPath, 143, true);
+	sequencer = new Sequencer(audioPath, 143, false);
 	sequencer.registerSequence({
 		name : "introduction",
 		start : 2,

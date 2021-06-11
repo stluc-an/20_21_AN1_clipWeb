@@ -2,7 +2,7 @@
 * @Author: Evrard Vincent
 * @Date:   2021-03-29 15:15:12
 * @Last Modified by:   oogre
-* @Last Modified time: 2021-04-07 19:06:00
+* @Last Modified time: 2021-04-22 11:52:36
 */
 *{
   transition: all 1s;
@@ -45,6 +45,7 @@ ul li span a {
 }
 li a{
 	color: #dedede;
+	white-space: nowrap;
 }
 li.current a{
 	color: #fff;
@@ -58,7 +59,6 @@ ul:not(.open) li:not(:first-child).current span a:before {
 
 ul li:not(:first-child) span a:before {
 	content : "";
-	
 }
 
 
@@ -79,8 +79,8 @@ ul.open{
 
 ul li:not(:first-child){
 	height: 20px;
+	text-overflow: "…";
 	overflow: hidden;
-
 }
 ul:not(.open) li:not(:first-child):not(.current){
 	height: 0;
