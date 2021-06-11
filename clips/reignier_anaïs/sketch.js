@@ -20,7 +20,7 @@ function setup(){
     
     camzoom = new CustomCamera()
     camzoom.setPosition(0, 0, 500);
-    sequencer = new Sequencer(audioPath, 64, false);
+    sequencer = new Sequencer(audioPath, 64, true);
     sequencer.registerSequence({
         name : "part1",
         start : 5,
