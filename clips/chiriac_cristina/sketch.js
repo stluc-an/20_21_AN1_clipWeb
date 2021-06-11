@@ -2,7 +2,7 @@ let audioPath = "./assets/audio/Orion.mp3";
 let sequencer;
 
 let particlues = [];
-
+let blinkers = [];
 
 
 function setup() {
@@ -87,6 +87,7 @@ let ellipse = new Ellipse;
                 particlues[particlues.length-1 ].target = p;
             }
             particlues.push(p);
+            blinkers.push(new twink(random(width), random(height),7, 1));
 
         }
 
@@ -177,7 +178,19 @@ let ellipse = new Ellipse;
             }
         
     })
-          
+            sequencer.registerSequence({
+        
+        name : "end3",
+        start : 210,
+        onStart : () => {
+            console.log("start-mi2");
+        },
+        stop: 243,
+        onStep : (event)=>{
+            console.log(event);
+            blinkers.push(new twink(random(width), random(height),20, 10));
+            }
+    })
 }
     
 
@@ -189,6 +202,9 @@ function draw(){
     for(let particlue of particlues){
         particlue.draw();
     }
+     for(let blinker of blinkers){
+        blinker.draw();
+    }
     
     
     
@@ -198,7 +214,7 @@ class Ellipse{
     constructor(x, y){
         this.x = x;
         this.y = y;
-        this.size = 2;
+        this.size = 3;
         this.target;
         this.bulletX = x;
         this.bulletY = y;
@@ -220,4 +236,33 @@ class Ellipse{
     
     }
 }
+
+class twink{
+    constructor(x, y, len, speed = 20){
+        this.x = x;
+        this.y = y;
+        this.len = len/2;
+        this.color = color;
+        this.dir = true;
+        this.counter = 0;
+        this.speed = speed;
+    }
+    draw(){
+        stroke(0,128,255);
+        if(this.dir){
+            line(this.x-this.len, this.y, this.x + this.len, this.y);    
+        }
+        else{
+            line(this.x, this.y-this.len, this.x , this.y + this.len);    
+        }
+
+        this.counter ++;
+        if(this.counter > this.speed){
+           this.dir = !this.dir;    
+           this.counter = 0;
+        }
+        
+    }
+}
+
 
