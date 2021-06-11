@@ -8,17 +8,44 @@
       <script type="text/javascript" src="./sketch.js"></script>
            
    	<style type="text/css">
-   		
    		body{
-   			background-image: url("./assets/backgrounds/background1.png");
-   			background-size: cover;
-   		}
+        margin: 0;
+      }
+      .frame.one{
+        background-image: url("./assets/backgrounds/background1.png");
+        background-size: cover;
+      }
+
+      .frame.two{
+        background-image: url("./assets/backgrounds/background2.jpg");
+        background-size: cover;
+      }
+
+
+      .firstHide .frame.one{
+        opacity: 0;
+      }
+      .frame{
+        height: 100%;
+        width: 100%;
+        position: absolute;
+        z-index: -1;
+      }
+
+      *{
+        transition: all 3s;
+      }
+
+
 
    	</style>
 
 
     </head>
-    <body>
+    <body class="" >
+      <div class="frame two"></div>
+      <div class="frame one"></div>
+
 
     </body>
 

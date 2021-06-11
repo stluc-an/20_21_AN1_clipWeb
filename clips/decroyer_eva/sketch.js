@@ -5,10 +5,30 @@ let particlues = [];
 let hasToRotate = false;
 let angle = 0;
 
+let frameOne;
+let frameTwo;
+let currentFrame;
+
+function switchBG(url){
+    if(currentFrame == frameOne){
+        currentFrame = frameTwo;
+    }else{
+        currentFrame = frameOne
+    }
+    document.body.classList.toggle("firstHide");
+    currentFrame.style.backgroundImage = url;
+}
+
+
 function setup() 
 {
 	createCanvas(window.innerWidth, window.innerHeight, WEBGL);
 	view = new Noise1D();
+
+
+    frameOne = document.querySelector(".frame.one");
+    frameTwo = document.querySelector(".frame.two");
+    currentFrame = frameOne;
 
 	sequencer = new Sequencer(audioPath, 118, false );
     sequencer.registerSequence({
@@ -17,47 +37,44 @@ function setup()
         onStart : () => {
             console.log("start");
         },
-        stop : 245,
-        onStop : () => {
-            console.log("stop");
-        },
+
+        
+
         onStep : (event) =>{
-
-
         	if(event.step == 38){
-        		 document.body.style.backgroundImage = "url(./assets/backgrounds/background12.jpg)"
+                switchBG("url(./assets/backgrounds/background12.jpg)");
         	}
 
     		if(event.step == 73){
-        		 document.body.style.backgroundImage = "url(./assets/backgrounds/background4.jpg)"
+        		switchBG("url(./assets/backgrounds/background4.jpg)");
         	}
 
 			if(event.step == 90){
-        		 document.body.style.backgroundImage = "url(./assets/backgrounds/background9.jpg)"
+        		switchBG("url(./assets/backgrounds/background9.jpg)");
         	}
 
 			if(event.step == 107){
-        		 document.body.style.backgroundImage = "url(./assets/backgrounds/background2.jpg)"
+        		switchBG("url(./assets/backgrounds/background2.jpg)");
         	}
 
         	if(event.step == 141){
-        		 document.body.style.backgroundImage = "url(./assets/backgrounds/background11.jpg)"
+        		switchBG("url(./assets/backgrounds/background11.jpg)");
         	}
 
         	if(event.step == 176){
-        		 document.body.style.backgroundImage = "url(./assets/backgrounds/background6.jpg)"
+        		switchBG("url(./assets/backgrounds/background6.jpg)");
         	}
 
         	if(event.step == 193){
-        		 document.body.style.backgroundImage = "url(./assets/backgrounds/background8.jpg)"
+        		switchBG("url(./assets/backgrounds/background8.jpg)");
         	}
 
         	if(event.step == 212){
-        		 document.body.style.backgroundImage = "url(./assets/backgrounds/background3.jpg)"
+        		switchBG("url(./assets/backgrounds/background3.jpg)");
         	}
 
         	if(event.step == 228){
-        		 document.body.style.backgroundImage = "url(./assets/backgrounds/background7.jpg)"
+        		switchBG("url(./assets/backgrounds/background7.jpg)");
         	}
 
 
@@ -67,6 +84,11 @@ function setup()
 
             console.log(event);
            
+        },
+
+        stop : 244,
+        onStop : () => {
+            console.log("stop");
         },
 
     });
@@ -119,16 +141,15 @@ class Noise1D
 			let y4 = (x+1)*(x+1)  - 5
 			y1 = min(y1 , y3);
 			y2 = min(y2 , y4);
-			strokeWeight(3);
+			strokeWeight(5);
 			stroke(0,0,0);
 			beginShape();
 			vertex(x, y1);
 			vertex(x+1, y2);
 			endShape();
 
-		}
+		} 
 	}
 }
-
 
 
