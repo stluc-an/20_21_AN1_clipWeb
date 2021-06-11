@@ -68,7 +68,7 @@ function preload(){
 function setup(){
 	createCanvas(windowWidth, windowHeight);
 	//séquenceur
-	sequencer = new Sequencer(audiopath , 40 , true);
+	sequencer = new Sequencer(audiopath , 40 , false);
 	sequencer.registerSequence({
 		name : "bulles",
 		start : 8+1/2,
