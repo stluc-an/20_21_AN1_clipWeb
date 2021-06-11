@@ -1,118 +1,350 @@
 var i=0
-var gif1;
-var gif2;
-var gif3; 
-var gif4;
-var gif5;
-var gif6;
-var gif7;
-var gif8;
-var gif9;
-var gif10;
-var gif11;
-//var musique;
 var audioPath ="./assets/audio/Jemon&Moska/RIKANKA.mp3";
+//var imgPath = "./assets/BG_Test_01.gif";
 var sequencer;
-function preload(){
-    
-  gif1 = createImg("15_FinalGIF_01.gif");
-  gif2 = createImg("15_FinalGIF_02.gif");
-  gif3 = createImg("15_FinalGIF_03.gif");
-  gif4 = createImg("15_FinalGIF_04.gif");
-  gif5 = createImg("15_FinalGIF_05.gif");
-  gif6 = createImg("15_FinalGIF_06.gif");
-  gif7 = createImg("15_FinalGIF_07.gif");
-  gif8 = createImg("15_FinalGIF_08.gif");
-  gif9 = createImg("15_FinalGIF_09.gif");
-  gif10 = createImg("15_FinalGIF_10.gif");
-  gif11 = createImg("15_FinalGIF-11.gif");
+let particules = [];
+let lineArray = [];
+let orderOfRotation;
+let orderSlider;
+let weightSlider;
+let xoff = 0;
+let yoff = 0;
+let hu = xoff * 255;   
+let angle;
 
-  //gif3 = createImg("");
-}
-
+let view;
 function setup() {
-  createCanvas(window.innerWidth, window.innerHeight);
+
+  createCanvas(window.innerWidth,window.innerHeight, WEBGL);
+  view= new Noir();
   sequencer = new Sequencer(audioPath,128, false);
 
+  sequencer.registerSequence({
+      name : "Noir",
+      start : 0,
+      onStart : () => {
+        console.log ("start");
+      },
+      stop : 16,
+      onStop : () => { 
+        view= new Line1();
+      },
+      steps: [1,1+1/4, 1+2/4,1+3/4],
+      onStep : (event) => {
+        console.log (event);
+        view.speed += 0.1
+      }
+  });
+  sequencer.registerSequence({
+      name : "Drop1",
+      start : 65,
+      onStart : () => { view= new Line2();
+      },
+      stop : 129,
+      onStop : () => { view= new Bump1();
+    },
+        steps: [1,1+1/4, 1+2/4,1+3/4],
+      onStep : (event) => {
+        console.log (event);
+        view.speed += 0.1
+      }
+    })
+    sequencer.registerSequence({
+      name : "Drop2",
+      start : 178,
+      onStart : () => { view= new Line2();
+      },
+      stop : 208,
+      onStop : () => { view= new Line3();
+    },
+        steps: [1,1+1/4, 1+2/4,1+3/4],
+      onStep : (event) => {
+        console.log (event);
+        view.speed += 0.1
+      }
+    })
+
+  sequencer.registerSequence({
+      name : "Bridge",
+      start : 274,
+      onStart : () => {view = new Bump1()},
+      stop : 340 ,
+      onStop : () => {view= new Kick1()},
+        steps: [1,1+1/2, 1+1/4],
+      onStep : (event) => {
+        console.log (event);
+        view.speed += 0.08
+}
+})
+  sequencer.registerSequence({
+      name : "Kick1",
+      start : 406,
+      onStart : () => {view = new Bump2()},
+      stop : 436 ,
+      onStop : () => {view= new Kick1()},
+        steps: [1,1+1/2, 1+1/4],
+      onStep : (event) => {
+        console.log (event);
+        view.speed += 0.08
+}
+})
+  sequencer.registerSequence({
+      name : "Kick1",
+      start : 500,
+      onStart : () => {view = new Noir()},
+      stop : 501,
+      onStop : () => {view= new Noir()},
+        steps: [1,1+1/2, 1+1/4],
+      onStep : (event) => {
+        console.log (event);
+        view.speed += 0.08
+    }
+  })
 }
 
 function draw() {
-	sequencer.update();
-  background (12,50)
-  i++;
-  if(i>=0 && i<1470){
-    gif1.position(0,0);
-    gif2.position(10000,10000);
-    gif3.position(10000,10000);
-    gif4.position(10000,10000);
-    gif5.position(10000,10000);
-    gif6.position(10000,10000);
-    gif7.position(10000,10000);
-    gif8.position(10000,10000);
-    gif9.position(10000,10000);
-    gif10.position(10000,10000);
-    gif11.position(10000,10000);
+ view.draw();
+ i++;
+  sequencer.update();
 
-//
-   }
- if(i>=1470 && i<2960){
-  	gif2.position(0,0);
-    gif3.position(10000,10000);
-    gif4.position(10000,10000);
-    gif5.position(10000,10000);
-    gif6.position(10000,10000);
-    gif7.position(10000,10000);
-    gif8.position(10000,10000);
-    gif9.position(10000,10000);
-    gif10.position(10000,10000);
-    gif11.position(10000,10000);
-  }
+ }
 
- if(i>=2960 && i<4450){
-    gif3.position(0,0);
-    gif2.position(10000,10000);
-    gif4.position(10000,10000);
-    gif5.position(10000,10000);
-    gif6.position(10000,10000);
-    gif7.position(10000,10000);
-    gif8.position(10000,10000);
-    gif9.position(10000,10000);
-    gif10.position(10000,10000);
-    gif11.position(10000,10000);
-}
- if(i>=4450 && i<5940){
-    gif4.position(0,0);
-}
- if(i>=5940 && i<7430){
-    gif5.position(0,0);
-}
- if(i>=7430 && i<8920){
-    gif6.position(0,0);
-}
 
- if(i>=8920 && i<10410){
-    gif7.position(0,0);
-}
- if(i>=10410 && i<11900){
-    gif8.position(0,0);
-}
- if(i>=11900 && i<13390){
-    gif9.position(0,0);
-}
- if(i>=13490 && i<14880){
-    gif10.position(0,0);
-}
- if(i>=14880 && i<16370){
-    gif11.position(0,0);
- 
-  //	gif1.position(111000000,11000000);
+function keyPressed(){
+    
+      if(key == '0'){
+        view = new Noir();
+    }
+
+    if(key == '1'){
+        view = new Line1();
+    }
+    if(key == '2'){
+        view = new Line2();
+    }
+    if(key == '3'){
+        view = new Line3();
+    }
+    if(key == '4'){
+        view = new Kick1();
+    }
+       if(key == '25'){
+        view = new Noise2D();
+    }
+         if(key == '6'){
+        view = new Bump1();
+    }
+             if(key == '7'){
+        view = new Bump2();
+    }
 
   }
- //
-  //if(i>=3345 && i<10000){
-  	//gif3.position(0,0);
-  }
-if(i>=16370) {
-	i=0;
+
+class Noise2D{
+    constructor(){
+        this.cam = createCamera();
+        this.cam.setPosition(180,180,0);
+        this.cam.lookAt(0,0,0);
+        this.cam.perspective(PI*0.08, width/height);
+        setCamera(this.cam);
+    }
+    draw(){
+        background(20,20,20);
+        stroke(hu, 0, 0, 0);
+       
+        let speed = frameCount *0.01;
+        rotateX(PI/3);
+        rotateY(PI/12);
+        rotateZ(180);
+        for(let y = -10 ; y<10 ; y++){
+            for(let x = -10 ; x<10 ; x++){
+                    push();
+                let z = noise(x*0.1 + speed,y*0.03+ speed);
+                let color= (10000,10);
+                z=lerp(-50,100,z);
+                noStroke();
+                translate(x,y,z);
+                plane(5);
+            pop();
+            }
+        }
+    }
 }
-//}
+
+
+
+class Line1{
+    constructor(){
+        this.cam = createCamera();
+        this.cam.setPosition(0,0,150);
+        this.cam.lookAt(0,0,0);
+        this.cam.perspective(PI*0.03, width/height);
+        setCamera(this.cam);
+    }
+    draw(){
+     background(0,0,0);
+        noFill();
+        let speed = frameCount*0.009;
+
+        for(let x = -10; x<10;x++){
+            let y1 = noise(x*0.03+ speed);
+            let color= random(1);
+            y1 = lerp(-10,10,y1)
+            let y2= noise((x+1)*0.03+speed);
+            y2= lerp(-10,10,y2)
+        
+         //plane(random(80));
+            stroke(100,100,500);
+          
+            strokeWeight(25);
+            beginShape();
+            vertex(x,y1);
+            vertex(x,y2);
+            endShape();
+          }
+
+
+
+    }   
+    }
+    class Kick1{
+    constructor(){
+        this.cam = createCamera();
+        this.cam.setPosition(0,0,150);
+        this.cam.lookAt(0,0,0);
+        this.cam.perspective(PI*0.03, width/height);
+        setCamera(this.cam);
+    }
+    draw(){
+      background(0,0,0);
+      noFill();
+      noStroke()
+       let hu = noise(xoff)*random(500); 
+        stroke(hu, 512, 256, 500);
+      strokeWeight(random(10));
+      plane(random(50));
+    }
+
+}
+     class Noir {
+    constructor(){
+        this.cam = createCamera();
+        this.cam.setPosition(0,0,150);
+        this.cam.lookAt(0,0,0);
+        this.cam.perspective(PI*0.03, width/height);
+        setCamera(this.cam);
+    }
+    draw(){
+      background(0,0,0);
+    }
+  }
+
+
+
+  class Line2 {
+    constructor(){
+        this.cam = createCamera();
+        this.cam.setPosition(0,0,150);
+        this.cam.lookAt(0,0,0);
+        this.cam.perspective(PI*0.03, width/height);
+        setCamera(this.cam);
+    }
+    draw(){
+       background(0,0,0);
+        noFill();
+        let speed = frameCount*0.009;
+
+        for(let x = -10; x<10;x++){
+            let y1 = noise(x*0.03+ speed);
+            let color= random(10);
+            y1 = lerp(-10,10,y1)
+            let y2= noise((x+1)*0.03+speed);
+            y2= lerp(-1,1,y2);
+            colorMode (HSB,255,255,255,255);
+            yoff+=0.005;
+            let hu = lerp(180, 255, noise(x, yoff , 100));
+            let sat =  lerp(180, 255, noise(x, yoff));
+            let bri = lerp(180,2550, noise(x, yoff,  100)); 
+            stroke(hu, sat, bri, 255);
+         // colorMode (HSB,255,2,2,0);
+            strokeWeight(15,1000);
+            beginShape();
+            vertex(x,y1);
+            vertex(x,y2);
+            endShape();
+          }
+    }
+  }
+
+
+
+    class Line3 {
+    constructor(){
+        this.cam = createCamera();
+        this.cam.setPosition(0,0,150);
+        this.cam.lookAt(0,0,0);
+        this.cam.perspective(PI*0.03, width/height);
+        setCamera(this.cam);
+    }
+    draw(){
+       background(0,0,0);
+        noFill();
+        let speed = frameCount*0.018;
+
+        for(let x = -20; x<10;x++){
+            let y1 = noise(x*0.07+ speed);
+            let color= random(1);
+            y1 = lerp(-10,10,y1)
+            let y2= noise((x+1)*0.03+speed);
+            y2= lerp(-1,1,y2)
+        
+        ;
+        let hu = noise(xoff)*random(500); 
+        colorMode (HSB,255,255,255);
+        stroke(hu, 255, 255, 255);
+            strokeWeight(15,1000);
+            beginShape();
+            vertex(x,y1);
+            vertex(x,y2);
+            endShape();
+          }
+    }
+  }
+     class Bump1 {
+    constructor(){
+        this.cam = createCamera();
+        this.cam.setPosition(0,0,150);
+        this.cam.lookAt(0,0,0);
+        this.cam.perspective(PI*0.03, width/height);
+        setCamera(this.cam);
+    }
+    draw(){
+        background(0,0,0);
+        noFill();
+        colorMode (RGB,255,255,255);
+        stroke(hu, 255, 255, 255);
+            strokeWeight(15,1000);
+     stroke(255, 50, 100);
+      strokeWeight(random(150));
+     plane(1);
+    } 
+  }
+    class Bump2 {
+    constructor(){
+        this.cam = createCamera();
+        this.cam.setPosition(0,0,150);
+        this.cam.lookAt(0,0,0);
+        this.cam.perspective(PI*0.03, width/height);
+        setCamera(this.cam);
+    }
+    draw(){
+        background(0,0,0);
+        noFill();
+        noStroke();
+     stroke(hu, 512, 256, 500);
+      strokeWeight(random(5));
+     plane(1.5);
+
+rotateX (random(270));
+    } 
+  }
