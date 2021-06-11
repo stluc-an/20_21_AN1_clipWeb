@@ -2,25 +2,26 @@ let audioPath="./assets/audio/lostSpaces35mm.mp3";
 let sequencer;
 let cam;
 let view;
-let calque;
 
 
+let cursor = 1;
 
-function setup(){
-    createCanvas(window.innerWidth,window.innerHeight, WEBGL);
-    view = new Noise3D();
-    sequencer= new Sequencer(audioPath,100, false); 
+function setup() {
+  
+    createCanvas(window.innerWidth, window.innerHeight, WEBGL);
+    view= new Noise3D();
+    sequencer= new Sequencer(audioPath,100, true); 
     sequencer.registerSequence({
         name:"introduction",
         start :9,
         onStart : ()=> {
             console.log("start");
-       
+       cursor = 0;
             },
         stop : 24,
         onStop : ()=> {
             console.log("stop");
-            
+            cursor = 1;
         },
         steps:[1,1+1/4,3+1/4],
         onStep : (event)=>{
@@ -29,10 +30,7 @@ function setup(){
            view.speed+=100;
         }
      });
-    
-    
-    
-    sequencer.registerSequence({
+     sequencer.registerSequence({
         name:"firstvocal",
         start:29,
         onStart:()=>{
@@ -41,6 +39,7 @@ function setup(){
             view.cam.lookAt(random(-10, 10), random(-6, 6),random(0,10));
             view.cam.perspective(PI*random(0.05,0.10) , width/height);
             view.background.setGreen(random(200,255));
+            cursor = 0;
             
     },
         stop:33,
@@ -52,7 +51,6 @@ function setup(){
            view.speed+=150;
         }
     });
-    
     sequencer.registerSequence({
         name:"second",
         start:37,
@@ -70,30 +68,12 @@ function setup(){
         onStep:(event)=>{
             console.log(event);
            view.speed+=150;
+            cursor = 1 - event.amount;
             
         }
     }); 
     
-    sequencer.registerSequence({
-        name:"3",
-        start:45,
-        onStart:()=>{
-        console.log("instru");
-             view.cam.setPosition(random(-0,50),random(0,100),random(90,100));
-            view.cam.lookAt(random(-10, 10), random(-6, 6),random(0,10));
-            view.cam.perspective(PI*random(0.05,0.10) , width/height);
-            view.background.setGreen(random(200,255));
-    },
-        stop:49,
-        onStop:()=>{
-        console.log("fin")
-    },
-        onStep:(event)=>{
-            console.log(event);
-           view.speed+=150;
-            
-        }
-    });
+    
     sequencer.registerSequence({
         name:"4",
         start:53,
@@ -705,7 +685,6 @@ function setup(){
     });
     
     
-    
 }
 
 
@@ -725,10 +704,8 @@ function draw(){
         particlue.draw();
     }
     
-
-
 class Noise3D{
-  constructor(){
+    constructor(){
     this.cam = createCamera();
     this.cam.setPosition(1, 90, 0);
     this.cam.lookAt(0,0,0)
@@ -740,29 +717,30 @@ class Noise3D{
    this.rX = rotateX; 
       this.background=color(173,216,230)
   }
-
-     draw(){
-       background(this.background);
+    draw(){
+        background(this.background);
         let speed = frameCount * 0.01;
-       
-        this.rX(PI/2);
+        rotateX(PI/2);
         rotateZ(speed);
-        
         for(let z = -3; z<3; z++){
         for(let y = -3; y<3; y++){
         for(let x = -3; x<3; x++){
-            let s = noise(x * 0.03 + this.speed,y * 0.03+ this.speed,z * 0.03+ this.speed)
+            let s = noise(x * 0.03 + speed,y * 0.03+ speed,z * 0.03+ speed)
             let color= lerp(0,255,s)
             push();
-            ;
-            fill(150,255,142,113)
-            scale(s*3);
+           
+           fill(150,255,142,113);
+            
+            let R = lerp(s*3, 1, cursor);
+        
+    
+            scale(R);
             translate(x,y,z);
             
-            box(0.9);
+             box(0.9);
             pop();
             }
            }
           }
          }
-}
+        }
