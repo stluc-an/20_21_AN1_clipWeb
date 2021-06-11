@@ -7,7 +7,7 @@ let particlues = [];
 function setup(){
      noCanvas()
      
-    sequencer = new Sequencer(audioPath, 120, true);
+    sequencer = new Sequencer(audioPath, 120, false);
      
     sequencer.registerSequence({
          name : "start",
@@ -362,8 +362,6 @@ sequencer.registerSequence({
     
     
     
-    
-    
     sequencer.registerSequence({
          name : "champignons",
          start : 183,
@@ -402,7 +400,7 @@ sequencer.registerSequence({
          onStop : () => {
              console.log("refrain1");
              
-             document.querySelector("refrain1").style.display = "none";
+             document.querySelector(".refrain1").style.display = "none";
          },
          onStep : (event) => {
              console.log(event);
@@ -425,7 +423,7 @@ sequencer.registerSequence({
          onStop : () => {
              console.log("refrain2");
              
-             document.querySelector("refrain2").style.display = "none";
+             document.querySelector(".refrain2").style.display = "none";
          },
          onStep : (event) => {
              console.log(event);
@@ -433,22 +431,42 @@ sequencer.registerSequence({
          }
      });  
     
-    
-    sequencer.registerSequence({
-         name : "champignons",
+sequencer.registerSequence({
+         name : "refrain3",
          start : 217,
          onStart : () => {
-            console.log("champignons");
+            console.log("refrain3");
              
-             document.querySelector(".champignons").style.display = "block";
+             document.querySelector(".refrain3").style.display = "block";
 
              
          },
-         stop : 218,
+         stop : 232,
          onStop : () => {
-             console.log("champignons");
+             console.log("refrain3");
              
-             document.querySelector(".champignons").style.display = "none";
+             document.querySelector(".refrain3").style.display = "none";
+         },
+         onStep : (event) => {
+             console.log(event);
+              
+         }
+     });  
+    sequencer.registerSequence({
+         name : "refrain4",
+         start : 233,
+         onStart : () => {
+            console.log("refrain4");
+             
+             document.querySelector(".refrain4").style.display = "block";
+
+             
+         },
+         stop : 249,
+         onStop : () => {
+             console.log("refrain4");
+             
+             document.querySelector(".refrain4").style.display = "none";
          },
          onStep : (event) => {
              console.log(event);
@@ -456,13 +474,179 @@ sequencer.registerSequence({
          }
      });  
     
+    sequencer.registerSequence({
+         name : "refrain5",
+         start : 250,
+         onStart : () => {
+            console.log("refrain5");
+             
+             document.querySelector(".refrain5").style.display = "block";
+
+             
+         },
+         stop : 263,
+         onStop : () => {
+             console.log("refrain5");
+             
+             document.querySelector(".refrain5").style.display = "none";
+         },
+         onStep : (event) => {
+             console.log(event);
+              
+         }
+     });  
     
+    sequencer.registerSequence({
+         name : "champi",
+         start : 264,
+         onStart : () => {
+            console.log("champi");
+             
+             document.querySelector(".champi").style.display = "block";
+
+             
+         },
+         stop : 265,
+         onStop : () => {
+             console.log("champi");
+             
+             document.querySelector(".champi").style.display = "none";
+         },
+         onStep : (event) => {
+             console.log(event);
+              
+         }
+     });  
     
+    sequencer.registerSequence({
+         name : "refrain6",
+         start : 266,
+         onStart : () => {
+            console.log("refrain6");
+             
+             document.querySelector(".refrain6").style.display = "block";
+
+             
+         },
+         stop : 273,
+         onStop : () => {
+             console.log("refrain6");
+             
+             document.querySelector(".refrain6").style.display = "none";
+         },
+         onStep : (event) => {
+             console.log(event);
+              
+         }
+     });  
+    sequencer.registerSequence({
+         name : "refrain7",
+         start : 274,
+         onStart : () => {
+            console.log("refrain7");
+             
+             document.querySelector(".refrain7").style.display = "block";
+
+             
+         },
+         stop : 277,
+         onStop : () => {
+             console.log("refrain7");
+             
+             document.querySelector(".refrain7").style.display = "none";
+         },
+         onStep : (event) => {
+             console.log(event);
+              
+         }
+     });  
     
-    
-    
-    
-    
+    sequencer.registerSequence({
+         name : "refrain8",
+         start : 278,
+         onStart : () => {
+            console.log("refrain8");
+             
+             document.querySelector(".refrain8").style.display = "block";
+
+             
+         },
+         stop : 293,
+         onStop : () => {
+             console.log("refrain8");
+             
+             document.querySelector(".refrain8").style.display = "none";
+         },
+         onStep : (event) => {
+             console.log(event);
+              
+         }
+     });  
+    sequencer.registerSequence({
+         name : "refrain9",
+         start : 294,
+         onStart : () => {
+            console.log("refrain9");
+             
+             document.querySelector(".refrain9").style.display = "block";
+
+             
+         },
+         stop : 300,
+         onStop : () => {
+             console.log("refrain9");
+             
+             document.querySelector(".refrain9").style.display = "none";
+         },
+         onStep : (event) => {
+             console.log(event);
+              
+         }
+     });  
+    sequencer.registerSequence({
+         name : "refrain10",
+         start : 301,
+         onStart : () => {
+            console.log("refrain10");
+             
+             document.querySelector(".refrain10").style.display = "block";
+
+             
+         },
+         stop : 306,
+         onStop : () => {
+             console.log("refrain10");
+             
+             document.querySelector(".refrain10").style.display = "none";
+         },
+         onStep : (event) => {
+             console.log(event);
+              
+         }
+     });  
+    sequencer.registerSequence({
+         name : "refrain11",
+         start : 307,
+         onStart : () => {
+            console.log("refrain11");
+             
+             document.querySelector(".refrain11").style.display = "block";
+
+             
+         },
+         stop : 335,
+         onStop : () => {
+             console.log("refrain11");
+             
+             document.querySelector(".refrain11").style.display = "none";
+         },
+         onStep : (event) => {
+             console.log(event);
+              
+         }
+     });  
+              
+         
     
     
     
