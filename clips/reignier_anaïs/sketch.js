@@ -5,6 +5,8 @@ let particlues = [];
 let colors = [];
 let disco = [];
 
+let camzoom;
+
 let col = {
     r: 200,
     g: 100,
@@ -16,8 +18,9 @@ function setup(){
     
    disco = new Sphere;
     
-    
-    sequencer = new Sequencer(audioPath, 64, false);
+    camzoom = new CustomCamera()
+    camzoom.setPosition(0, 0, 500);
+    sequencer = new Sequencer(audioPath, 64, true);
     sequencer.registerSequence({
         name : "part1",
         start : 5,
@@ -179,7 +182,7 @@ function setup(){
         onStart : () => {
             console.log("zouu");
         },
-        stop : 200,
+        stop : 146,
          onStop : ()=>{
             disco = [];
         },
@@ -289,7 +292,7 @@ function setup(){
         onStart : () => {
             console.log("zouu");
         },
-        stop : 200,
+        stop : 146,
          onStop : ()=>{
             disco = [];
         },
@@ -305,7 +308,7 @@ function setup(){
         onStart : () => {
             console.log("zouu");
         },
-        stop : 200,
+        stop : 148,
          onStop : ()=>{
             disco = [];
         },
@@ -315,15 +318,27 @@ function setup(){
         }
     });
     
+    sequencer.registerSequence({
+        name : "Fin",
+        start : 112,//100
+        stop : 148,//146
+        steps :  (new Array(24)).fill(0).map((v, key)=>1+key/24),
+        onStart : () => {
+            //camzoom.setPosition(0 , 0, 300);
+            camzoom.move(0, 0,-300);
+        },
+        onStep : (event) => {
+               camzoom.setAmount(event.amount);
+        },
+    });
     
-     
-  
 
 }
 
 
 function draw(){
     sequencer.update();
+    camzoom.update();
      background(255, 0, 255, 90);
     
     for(let color of colors){
@@ -334,6 +349,7 @@ function draw(){
     }
     
     disco.draw();
+    
 }
 
 class Ellipse{
@@ -406,6 +422,43 @@ class Sphere{
             }
         }
   
+}
+
+class CustomCamera{
+    constructor(){
+        this.myCam = createCamera();
+        setCamera(this.myCam);
+        this.x = 0;
+        this.y = 0;
+        this.z = 0;
+        this.dx = 0;
+        this.dy = 0;
+        this.dz = 0;
+        this.amount = 0;
+    }
+    setPosition(x, y, z){
+        this.x = x;
+        this.y = y;
+        this.z = z;
+        this.myCam.setPosition(x, y, z);
+    }
+    lookAt(x, y, z){
+        this.myCam.lookAt(x, y, z);
+    }
+    move(x, y, z){
+        this.dx = x;
+        this.dy = y;
+        this.dz = z;
+    }
+    setAmount(amount){
+         this.amount = amount; 
+    }
+    update(){
+        let _x = lerp(this.x, this.x+this.dx, this.amount);
+        let _y = lerp(this.y, this.y+this.dy, this.amount);
+        let _z = lerp(this.z, this.z+this.dz, this.amount);
+        this.myCam.setPosition(_x, _y, _z);
+    }
 }
 
 
