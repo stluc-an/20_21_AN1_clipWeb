@@ -1,4 +1,4 @@
-let audioPath = "../assets/audio/daydreamer.mp3";
+let audioPath = "../godfroid_louane/assets/audio/daydreamer.mp3";
 let sequencer;
 
 let imagesHolder =[];
@@ -9,13 +9,13 @@ var size = -900
 
 function preload() {
 	//butterfly 0-17 gauche
-	imagesHolder.push(new ImageDisplayer('butterfly.png', -600 , -100, 150, 150));//0
-	imagesHolder.push(new ImageDisplayer('butterfly2.png', -540 , -120, 100, 100));//1
-	imagesHolder.push(new ImageDisplayer('butterfly3.png', -470 , -100, 170, 170));//2
-	imagesHolder.push(new ImageDisplayer('insecte2.png', -680 , -150, 50, 50));//3
+	imagesHolder.push(new ImageDisplayer('butterfly.png', -450 , -150, 150, 150));//0
+	imagesHolder.push(new ImageDisplayer('butterfly2.png', -100 , -120, 100, 100));//1
+	imagesHolder.push(new ImageDisplayer('butterfly3.png', -300 ,-180, -170, 170));//2
+	imagesHolder.push(new ImageDisplayer('insecte2.png', -680 , 10, 50, 50));//3
     imagesHolder.push(new ImageDisplayer('butterfly5.png', -630 , -210, 160, 160));//4
-    imagesHolder.push(new ImageDisplayer('butterfly7.png', -700 , -250, 150, 150));//5
-    imagesHolder.push(new ImageDisplayer('butterfly8.png', -780 , -300, 180, 180));//6
+    imagesHolder.push(new ImageDisplayer('butterfly7.png', -700 , 50, 150, 150));//5
+    imagesHolder.push(new ImageDisplayer('butterfly8.png', -680 , 30, 180, 180));//6
     imagesHolder.push(new ImageDisplayer('butterfly4.png', -800 , -100, 160, 160));//7
 	imagesHolder.push(new ImageDisplayer('butterfly.png',  -760 , -450, 150, 150));//8
 	imagesHolder.push(new ImageDisplayer('butterfly2.png', -760 , -350, 120, 120));//9

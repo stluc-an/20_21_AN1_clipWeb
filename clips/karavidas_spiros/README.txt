@@ -1,3 +1,3 @@
 Vindicta
-Lost Trauma
-https://soundcloud.com/vndct/vindicta-lost-trauma
+BRINN FÖR HELVETE
+https://soundcloud.com/vndct/brinn-for-helvete
