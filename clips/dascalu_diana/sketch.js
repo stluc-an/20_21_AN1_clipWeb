@@ -20,6 +20,10 @@ let pulse15;
 let Pulse16;
 let pulse17;
 let pulse18;
+let expension = 0;
+
+let black = 0;
+let white = 255;
 
 function setup() {
     createCanvas(window.innerWidth, window.innerHeight);
@@ -39,6 +43,22 @@ function setup() {
         onStep : (event) =>{
             console.log(event);
             particules.push(new rectangle(random(width), random(height)) );
+            
+            expension = event.amount
+        } 
+
+    }); 
+    
+        sequencer.registerSequence({
+
+        name : "reverse",
+        start : 5,
+        stop : 10,
+        onStep : (event) =>{
+            let tmp = black;
+            black = white;
+            white = tmp;
+            
         } 
 
     }); 
@@ -77,13 +97,15 @@ function setup() {
 
 function draw() {
     sequencer.update();
-    background(0);
-    stroke(250);
-    fill(250);
+    background(black);
+    stroke(white);
+    fill(white);
 
     for(let particule of particules){
         particule.draw();
-        pulse.display(); 
+       
+    }
+     pulse.display(); 
         pulse.move();
         pulse2.display(); 
         pulse2.move();
@@ -119,7 +141,6 @@ function draw() {
         pulse17.move();
         pulse18.display(); 
         pulse18.move();
-    }
 }
 
 
@@ -131,7 +152,7 @@ class rectangle{
     }
     draw(){
         noFill();
-        stroke(250)
+        stroke(white)
         ellipse(this.x, this.y, this.size);
     } 
 }
@@ -140,7 +161,8 @@ class Pulser {
 
     constructor(x, y, w, h) {  
         this.x = x; 
-        this.y = y;
+        this.defaulty = y;
+        this.y = this.defaulty;
         this.w = w;
         this.h = h;
         this.color = "white";
@@ -151,7 +173,7 @@ class Pulser {
 
 
     display() {
-        fill(250);
+        fill(white);
         ellipse(this.x, this.y, this.w, this.h);
         this.w += random(-1, 1);
         this.h += random(-1, 1);
@@ -161,7 +183,8 @@ class Pulser {
 
     move() {
         this.p = noise(this.n);
-        this.x = map(this.p, 0, 1, 0, width);
+        this.x = lerp(width/2, this.p * width, expension);
+        this.y = lerp(height/2,  this.defaulty, expension)
         this.n = this.n + this.inc;
     }
 }
