@@ -10,7 +10,7 @@ function setup() {
   
     createCanvas(window.innerWidth, window.innerHeight, WEBGL);
     view= new Noise3D();
-    sequencer= new Sequencer(audioPath,100, true); 
+    sequencer= new Sequencer(audioPath,100, false); 
     sequencer.registerSequence({
         name:"introduction",
         start :9,
@@ -42,9 +42,10 @@ function setup() {
             cursor = 0;
             
     },
-        stop:33,
+        stop:32,
         onStop:()=>{
-        console.log("fin")
+        console.log("fin");
+            cursor = 1;
     },
         onStep:(event)=>{
             console.log(event);
@@ -56,19 +57,22 @@ function setup() {
         start:37,
         onStart:()=>{
         console.log("vocal");
+            
              view.cam.setPosition(random(0,50),random(0,100),random(90,100));
             view.cam.lookAt(random(-10, 10), random(-6, 6),random(0,10));
             view.cam.perspective(PI*random(0.05,0.10) , width/height);
             view.background.setGreen(random(200,255));
     },
-        stop:41,
+        stop:40,
         onStop:()=>{
-        console.log("fin")
+        console.log("fin");
+            
+            
     },
         onStep:(event)=>{
             console.log(event);
            view.speed+=150;
-            cursor = 1 - event.amount;
+            cursor = 0 - event.amount;
             
         }
     }); 
@@ -218,6 +222,7 @@ function setup() {
         start:89,
         onStart:()=>{
         console.log("instru");
+            cursor = 0;
            view.cam.setPosition(random(-0,50),random(0,100),random(90,100));
             view.cam.lookAt(random(-10, 10), random(-6, 6),random(0,10));
             view.cam.perspective(PI*random(0.05,0.10) , width/height);
@@ -237,6 +242,7 @@ function setup() {
         start:137,
         onStart:()=>{
         console.log("instru");
+            cursor = 1;
            view.cam.setPosition(random(-0,50),random(0,100),random(90,100));
             view.cam.lookAt(random(-10, 10), random(-6, 6),random(0,10));
             view.cam.perspective(PI*random(0.05,0.10) , width/height);
@@ -257,6 +263,7 @@ function setup() {
         start:141,
         onStart:()=>{
         console.log("instru");
+            cursor = 0;
            view.cam.setPosition(random(-0,50),random(0,100),random(90,100));
             view.cam.lookAt(random(-10, 10), random(-6, 6),random(0,10));
             view.cam.perspective(PI*random(0.05,0.10) , width/height);
@@ -277,6 +284,7 @@ function setup() {
         start:149,
         onStart:()=>{
         console.log("instru");
+            cursor = 1;
            view.cam.setPosition(random(-0,50),random(0,100),random(90,100));
             view.cam.lookAt(random(-10, 10), random(-6, 6),random(0,10));
             view.cam.perspective(PI*random(0.05,0.10) , width/height);
@@ -296,6 +304,7 @@ function setup() {
         start:154,
         onStart:()=>{
         console.log("instru");
+            cursor = 0;
            view.cam.setPosition(random(-0,50),random(0,100),random(90,100));
             view.cam.lookAt(random(-10, 10), random(-6, 6),random(0,10));
             view.cam.perspective(PI*random(0.05,0.10) , width/height);
@@ -315,6 +324,7 @@ function setup() {
         start:158,
         onStart:()=>{
         console.log("instru");
+            cursor = 1;
            view.cam.setPosition(random(-0,50),random(0,100),random(90,100));
             view.cam.lookAt(random(-10, 10), random(-6, 6),random(0,10));
             view.cam.perspective(PI*random(0.05,0.10) , width/height);
@@ -372,6 +382,7 @@ function setup() {
         start:169,
         onStart:()=>{
         console.log("instru");
+            cursor = 0;
            view.cam.setPosition(random(-0,50),random(0,100),random(90,100));
             view.cam.lookAt(random(-10, 10), random(-6, 6),random(0,10));
             view.cam.perspective(PI*random(0.05,0.10) , width/height);
@@ -462,6 +473,7 @@ function setup() {
         onStep:(event)=>{
             console.log(event);
            view.speed+=150;
+            cursor = 0 - event.amount;
             
         }
     });sequencer.registerSequence({
