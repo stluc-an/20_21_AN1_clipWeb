@@ -62,35 +62,67 @@ function setup() {
             view.cam.lookAt(random(-10, 10), random(-6, 6),random(0,10));
             view.cam.perspective(PI*random(0.05,0.10) , width/height);
             view.background.setGreen(random(200,255));
+            cursor=0;
     },
-        stop:40,
+        stop:39,
         onStop:()=>{
         console.log("fin");
+            cursor=1;
             
             
     },
         onStep:(event)=>{
             console.log(event);
            view.speed+=150;
-            cursor = 0 - event.amount;
+            //cursor = 0 - event.amount;
+            
+        }
+    });  sequencer.registerSequence({
+        name:"trois",
+        start:41,
+        onStart:()=>{
+        console.log("vocal");
+            
+             view.cam.setPosition(random(0,50),random(0,100),random(90,100));
+            view.cam.lookAt(random(-10, 10), random(-6, 6),random(0,10));
+            view.cam.perspective(PI*random(0.05,0.10) , width/height);
+            view.background.setGreen(random(200,255));
+            cursor = 0;
+    },
+        stop:44,
+        onStop:()=>{
+        console.log("fin");
+            cursor = 1;
+            
+            
+    },
+        onStep:(event)=>{
+            console.log(event);
+           view.speed+=150;
+            //cursor = 0 - event.amount;
             
         }
     }); 
     
     
+    
+    
+    
     sequencer.registerSequence({
         name:"4",
-        start:53,
+        start:49,
         onStart:()=>{
         console.log("instru");
              view.cam.setPosition(random(-0,50),random(0,100),random(90,100));
             view.cam.lookAt(random(-10, 10), random(-6, 6),random(0,10));
             view.cam.perspective(PI*random(0.05,0.10) , width/height);
             view.background.setGreen(random(200,255));
+            cursor = 0;
     },
-        stop:56,
+        stop:52,
         onStop:()=>{
-        console.log("fin")
+        console.log("fin");
+            cursor = 1;
     },
         onStep:(event)=>{
             console.log(event);
@@ -107,10 +139,12 @@ function setup() {
             view.cam.lookAt(random(-10, 10), random(-6, 6),random(0,10));
             view.cam.perspective(PI*random(0.05,0.10) , width/height);
             view.background.setGreen(random(200,255));
+            cursor = 0;
     },
-        stop:61,
+        stop:60,
         onStop:()=>{
-        console.log("fin")
+        console.log("fin");
+            cursor = 1;
     },
         onStep:(event)=>{
             console.log(event);
@@ -126,10 +160,12 @@ function setup() {
             view.cam.lookAt(random(-10, 10), random(-6, 6),random(0,10));
             view.cam.perspective(PI*random(0.05,0.10) , width/height);
             view.background.setGreen(random(200,255));
+            cursor = 0;
     },
-        stop:69,
+        stop:68,
         onStop:()=>{
-        console.log("fin")
+        console.log("fin");
+            cursor = 1;
     },
         onStep:(event)=>{
             console.log(event);
@@ -145,10 +181,12 @@ function setup() {
             view.cam.lookAt(random(-10, 10), random(-6, 6),random(0,10));
             view.cam.perspective(PI*random(0.05,0.10) , width/height);
             view.background.setGreen(random(200,255));
+            
     },
         stop:74,
         onStop:()=>{
-        console.log("fin")
+        console.log("fin");
+            
     },
           
         onStep:(event)=>{
@@ -158,7 +196,7 @@ function setup() {
         }
     }); sequencer.registerSequence({
         name:"8",
-        start:77,
+        start:76,
         onStart:()=>{
         console.log("instru");
              view.cam.setPosition(random(-0,50),random(0,100),random(90,100));
@@ -178,7 +216,7 @@ function setup() {
         }
     }); sequencer.registerSequence({
         name:"9",
-        start:81,
+        start:80,
         onStart:()=>{
         console.log("instru");
             view.cam.setPosition(53,3,103);
@@ -198,7 +236,7 @@ function setup() {
         }
     }); sequencer.registerSequence({
         name:"9bi",
-        start:85,
+        start:84,
         onStart:()=>{
         console.log("instru");
              view.cam.setPosition(random(-0,50),random(0,100),random(90,100));
@@ -222,7 +260,7 @@ function setup() {
         start:89,
         onStart:()=>{
         console.log("instru");
-            cursor = 0;
+            //cursor = 0;
            view.cam.setPosition(random(-0,50),random(0,100),random(90,100));
             view.cam.lookAt(random(-10, 10), random(-6, 6),random(0,10));
             view.cam.perspective(PI*random(0.05,0.10) , width/height);
@@ -234,7 +272,8 @@ function setup() {
     },
         onStep:(event)=>{
             console.log(event);
-           view.speed+=150;
+           view.speed+=500;
+            cursor = 0 + event.amount;
             
         }
     });sequencer.registerSequence({
@@ -242,25 +281,29 @@ function setup() {
         start:137,
         onStart:()=>{
         console.log("instru");
-            cursor = 1;
+            cursor = 0;
            view.cam.setPosition(random(-0,50),random(0,100),random(90,100));
             view.cam.lookAt(random(-10, 10), random(-6, 6),random(0,10));
             view.cam.perspective(PI*random(0.05,0.10) , width/height);
             view.background.setGreen(random(200,255));
     },
-        stop:138,
+        stop:141,
         onStop:()=>{
-        console.log("fin")
+        console.log("fin");
+           cursor = 1;  
     },
         onStep:(event)=>{
             console.log(event);
-           view.speed+=150;
+           view.speed+=100;
             
         }
     });
+    
+    
+    
     sequencer.registerSequence({
         name:"12",
-        start:141,
+        start:145,
         onStart:()=>{
         console.log("instru");
             cursor = 0;
@@ -269,39 +312,41 @@ function setup() {
             view.cam.perspective(PI*random(0.05,0.10) , width/height);
             view.background.setGreen(random(200,255));
     },
-        stop:145,
+        stop:149,
         onStop:()=>{
-        console.log("fin")
+        console.log("fin");
+             cursor = 1;
     },
         onStep:(event)=>{
             console.log(event);
-           view.speed+=150;
+           view.speed+=100;
             
         }
     });
     sequencer.registerSequence({
         name:"13",
-        start:149,
+        start:153,
         onStart:()=>{
         console.log("instru");
-            cursor = 1;
+            cursor = 0;
            view.cam.setPosition(random(-0,50),random(0,100),random(90,100));
             view.cam.lookAt(random(-10, 10), random(-6, 6),random(0,10));
             view.cam.perspective(PI*random(0.05,0.10) , width/height);
             view.background.setGreen(random(200,255));
     },
-        stop:153,
+        stop:156,
         onStop:()=>{
-        console.log("fin")
+        console.log("fin");
+             cursor = 1;
     },
         onStep:(event)=>{
             console.log(event);
-           view.speed+=150;
+           view.speed+=100;
             
         }
     }); sequencer.registerSequence({
         name:"14",
-        start:154,
+        start:157,
         onStart:()=>{
         console.log("instru");
             cursor = 0;
@@ -310,38 +355,39 @@ function setup() {
             view.cam.perspective(PI*random(0.05,0.10) , width/height);
             view.background.setGreen(random(200,255));
     },
-        stop:157,
+        stop:159,
         onStop:()=>{
-        console.log("fin")
+        console.log("fin");
+             cursor = 1;
     },
         onStep:(event)=>{
             console.log(event);
-           view.speed+=150;
+           view.speed+=100;
             
         }
     }); sequencer.registerSequence({
         name:"15",
-        start:158,
+        start:161,
         onStart:()=>{
         console.log("instru");
-            cursor = 1;
+            
            view.cam.setPosition(random(-0,50),random(0,100),random(90,100));
             view.cam.lookAt(random(-10, 10), random(-6, 6),random(0,10));
             view.cam.perspective(PI*random(0.05,0.10) , width/height);
             view.background.setGreen(random(200,255));
     },
-        stop:161,
+        stop:162,
         onStop:()=>{
         console.log("fin")
     },
         onStep:(event)=>{
             console.log(event);
-           view.speed+=150;
+           view.speed+=100;
             
         }
     });sequencer.registerSequence({
         name:"16",
-        start:162,
+        start:165,
         onStart:()=>{
         console.log("instru");
            view.cam.setPosition(random(-0,50),random(0,100),random(90,100));
@@ -349,37 +395,39 @@ function setup() {
             view.cam.perspective(PI*random(0.05,0.10) , width/height);
             view.background.setGreen(random(200,255));
     },
-        stop:165,
+        stop:169,
         onStop:()=>{
         console.log("fin")
     },
         onStep:(event)=>{
             console.log(event);
-           view.speed+=150;
+           view.speed+=100;
             
         }
     });sequencer.registerSequence({
         name:"17",
-        start:162,
+        start:170,
         onStart:()=>{
         console.log("instru");
            view.cam.setPosition(random(-0,50),random(0,100),random(90,100));
             view.cam.lookAt(random(-10, 10), random(-6, 6),random(0,10));
             view.cam.perspective(PI*random(0.05,0.10) , width/height);
             view.background.setGreen(random(200,255));
+             cursor = 0;
     },
-        stop:165,
+        stop:172,
         onStop:()=>{
-        console.log("fin")
+        console.log("fin");
+             cursor = 1;
     },
         onStep:(event)=>{
             console.log(event);
-           view.speed+=150;
+           view.speed+=100;
             
         }
     });sequencer.registerSequence({
         name:"18",
-        start:169,
+        start:174,
         onStart:()=>{
         console.log("instru");
             cursor = 0;
@@ -388,18 +436,18 @@ function setup() {
             view.cam.perspective(PI*random(0.05,0.10) , width/height);
             view.background.setGreen(random(200,255));
     },
-        stop:170,
+        stop:176,
         onStop:()=>{
         console.log("fin")
     },
         onStep:(event)=>{
             console.log(event);
-           view.speed+=150;
+           view.speed+=100;
             
         }
     });sequencer.registerSequence({
         name:"19",
-        start:172,
+        start:178,
         onStart:()=>{
         console.log("instru");
            view.cam.setPosition(random(-0,50),random(0,100),random(90,100));
@@ -407,19 +455,19 @@ function setup() {
             view.cam.perspective(PI*random(0.05,0.10) , width/height);
             view.background.setGreen(random(200,255));
     },
-        stop:174,
+        stop:180,
         onStop:()=>{
         console.log("fin")
     },
         onStep:(event)=>{
             console.log(event);
-           view.speed+=150;
+           view.speed+=100;
             
         }
     });
     sequencer.registerSequence({
         name:"20",
-        start:176,
+        start:182,
         onStart:()=>{
         console.log("instru");
            view.cam.setPosition(random(-0,50),random(0,100),random(90,100));
@@ -427,19 +475,19 @@ function setup() {
             view.cam.perspective(PI*random(0.05,0.10) , width/height);
             view.background.setGreen(random(200,255));
     },
-        stop:178,
+        stop:184,
         onStop:()=>{
         console.log("fin")
     },
         onStep:(event)=>{
             console.log(event);
-           view.speed+=150;
+           view.speed+=100;
             
         }
     });
     sequencer.registerSequence({
         name:"21",
-        start:180,
+        start:185,
         onStart:()=>{
         console.log("instru");
            view.cam.setPosition(random(-0,50),random(0,100),random(90,100));
@@ -447,18 +495,18 @@ function setup() {
             view.cam.perspective(PI*random(0.05,0.10) , width/height);
             view.background.setGreen(random(200,255));
     },
-        stop:182,
+        stop:188,
         onStop:()=>{
         console.log("fin")
     },
         onStep:(event)=>{
             console.log(event);
-           view.speed+=150;
+           view.speed+=100;
             
         }
     }); sequencer.registerSequence({
         name:"22",
-        start:184,
+        start:190,
         onStart:()=>{
         console.log("instru");
            view.cam.setPosition(random(-0,50),random(0,100),random(90,100));
@@ -466,7 +514,7 @@ function setup() {
             view.cam.perspective(PI*random(0.05,0.10) , width/height);
             view.background.setGreen(random(200,255));
     },
-        stop:185,
+        stop:192,
         onStop:()=>{
         console.log("fin")
     },
@@ -478,25 +526,6 @@ function setup() {
         }
     });sequencer.registerSequence({
         name:"23",
-        start:188,
-        onStart:()=>{
-        console.log("instru");
-           view.cam.setPosition(random(-0,50),random(0,100),random(90,100));
-            view.cam.lookAt(random(-10, 10), random(-6, 6),random(0,10));
-            view.cam.perspective(PI*random(0.05,0.10) , width/height);
-            view.background.setGreen(random(200,255));
-    },
-        stop:190,
-        onStop:()=>{
-        console.log("fin")
-    },
-        onStep:(event)=>{
-            console.log(event);
-           view.speed+=150;
-            
-        }
-    });sequencer.registerSequence({
-        name:"24",
         start:192,
         onStart:()=>{
         console.log("instru");
@@ -511,7 +540,26 @@ function setup() {
     },
         onStep:(event)=>{
             console.log(event);
-           view.speed+=150;
+           view.speed+=100;
+            
+        }
+    });sequencer.registerSequence({
+        name:"24",
+        start:194,
+        onStart:()=>{
+        console.log("instru");
+           view.cam.setPosition(random(-0,50),random(0,100),random(90,100));
+            view.cam.lookAt(random(-10, 10), random(-6, 6),random(0,10));
+            view.cam.perspective(PI*random(0.05,0.10) , width/height);
+            view.background.setGreen(random(200,255));
+    },
+        stop:196,
+        onStop:()=>{
+        console.log("fin")
+    },
+        onStep:(event)=>{
+            console.log(event);
+           view.speed+=100;
             
         }
     });sequencer.registerSequence({
@@ -530,7 +578,7 @@ function setup() {
     },
         onStep:(event)=>{
             console.log(event);
-           view.speed+=150;
+           view.speed+=60;
             
         }
     });sequencer.registerSequence({
@@ -549,7 +597,7 @@ function setup() {
     },
         onStep:(event)=>{
             console.log(event);
-           view.speed+=150;
+           view.speed+=60;
             
         }
     });
@@ -569,7 +617,7 @@ function setup() {
     },
         onStep:(event)=>{
             console.log(event);
-           view.speed+=150;
+           view.speed+=50;
             
         }
     });sequencer.registerSequence({
@@ -589,7 +637,7 @@ function setup() {
         steps:[1,1+1/4,3+1/4],
         onStep:(event)=>{
             console.log(event);
-           view.speed+=150;
+           view.speed+=100;
             
         }
     });
@@ -610,7 +658,7 @@ function setup() {
         steps:[1,1+1/4,3+1/4],
         onStep:(event)=>{
             console.log(event);
-           view.speed+=150;
+           view.speed+=100;
             
         }
     }); sequencer.registerSequence({
@@ -630,7 +678,7 @@ function setup() {
         steps:[1,1+1/4,3+1/4],
         onStep:(event)=>{
             console.log(event);
-           view.speed+=150;
+           view.speed+=100;
             
         }
     });
@@ -651,7 +699,7 @@ function setup() {
         steps:[1,1+1/4,3+1/4],
         onStep:(event)=>{
             console.log(event);
-           view.speed+=150;
+           view.speed+=100;
             
         }
     });sequencer.registerSequence({
@@ -671,7 +719,7 @@ function setup() {
     },
         onStep:(event)=>{
             console.log(event);
-           view.speed+=140;
+           view.speed+=100;
             
         }
     });sequencer.registerSequence({
@@ -691,7 +739,7 @@ function setup() {
     },
         onStep:(event)=>{
             console.log(event);
-           view.speed+=140;
+           view.speed+=100;
             
         }
     });
