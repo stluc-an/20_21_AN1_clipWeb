@@ -3,7 +3,7 @@ let sequencer;
 
 let particlues = [];
 let blinkers = [];
-
+let clings = [];
 
 function setup() {
     createCanvas(window.innerWidth, window.innerHeight);
@@ -26,7 +26,7 @@ let ellipse = new Ellipse;
         },
         onStep : (event)=>{
             console.log(event);
-            let p = new Ellipse( random(width), random(height) );
+            let p = new Ellipse( random(width), random(height),5 );
             if(particlues.length>0){
                 particlues[particlues.length-1 ].target = p;
             }
@@ -42,15 +42,16 @@ let ellipse = new Ellipse;
         name : "intro",
         start : 1,
         onStart : () => {
-            sequencer.BPM = 128;
+            sequencer.BPM = 130;
             console.log("start-intro");
         },
         stop: 79,
         onStep : (event)=>{
-        particlues.push( new Ellipse( random(width), random(height) ) )
+        particlues.push( new Ellipse( random(width), random(height),10) )
     }
     
     })
+
         sequencer.registerSequence({
         
         name : "tilt",
@@ -61,12 +62,31 @@ let ellipse = new Ellipse;
         stop: 208,
         onStep : (event)=>{  
         console.log("tilt");
-        particlues.push( new Ellipse( random(width), random(height) ) )
+        particlues.push( new Ellipse( random(width), random(height),3 ) )
         translate(p5.Vector.fromAngle(millis() / 500, 20));
-                
+
+            blinkers.push(new twink(random(width), random(height),15, 1));
             }
     
     })
+
+        sequencer.registerSequence({
+        
+        name : "rotations",
+        start : 147,
+        onStart : () => {
+            console.log("start-mi2");
+        },
+        stop: 160,
+        onStep : (event)=>{  
+        console.log("tilt");
+
+            blinkers.push(new twink(random(width), random(height),18, 7));
+            blinkers.push(new twink(random(width), random(height),13, 1));
+            blinkers.push(new twink(random(width), random(height),20, 1));
+            }
+    })
+
 
         sequencer.registerSequence({
         name : "boop",
@@ -82,13 +102,11 @@ let ellipse = new Ellipse;
         },
         onStep : (event)=>{
             console.log(event);
-            let p = new Ellipse( random(width), random(height) );
+            let p = new Ellipse( random(width), random(height),10 );
             if(particlues.length>0){
                 particlues[particlues.length-1 ].target = p;
             }
             particlues.push(p);
-            blinkers.push(new twink(random(width), random(height),7, 1));
-
         }
 
       })   
@@ -108,7 +126,7 @@ let ellipse = new Ellipse;
         },
         onStep : (event)=>{
             console.log(event);
-            let p = new Ellipse( random(width), random(height) );
+            let p = new Ellipse( random(width), random(height),3 );
             if(particlues.length>0){
                 particlues[particlues.length-1 ].target = p;
             }
@@ -132,7 +150,7 @@ let ellipse = new Ellipse;
         },
         onStep : (event)=>{
             console.log(event);
-            let p = new Ellipse( random(width), random(height) );
+            let p = new Ellipse( random(width), random(height),7 );
             if(particlues.length>0){
                 particlues[particlues.length-1 ].target = p;
             }
@@ -142,6 +160,53 @@ let ellipse = new Ellipse;
 
     })
 
+         sequencer.registerSequence({
+        name : "boop4",
+        start : 189,
+        onStart : () => {
+            sequencer.BPM = 41;
+            console.log("start");
+        },
+        stop : 208,
+        onStop : () => {
+            console.log("stop");
+            
+        },
+        onStep : (event)=>{
+            console.log(event);
+            let p = new Ellipse( random(width), random(height),7 );
+            if(particlues.length>0){
+                particlues[particlues.length-1 ].target = p;
+            }
+            particlues.push(p);
+
+        }
+
+    })
+
+        sequencer.registerSequence({
+        name : "boop4",
+        start : 189,
+        onStart : () => {
+            sequencer.BPM = 41;
+            console.log("start");
+        },
+        stop : 208,
+        onStop : () => {
+            console.log("stop");
+            
+        },
+        onStep : (event)=>{
+            console.log(event);
+            let p = new Ellipse( random(width), random(height),7 );
+            if(particlues.length>0){
+                particlues[particlues.length-1 ].target = p;
+            }
+            particlues.push(p);
+
+        }
+
+    })
           sequencer.registerSequence({
         
         name : "end",
@@ -152,7 +217,7 @@ let ellipse = new Ellipse;
         stop: 243,
         onStep : (event)=>{
             console.log(event);
-            let p = new Ellipse( random(width), random(height) );
+            let p = new Ellipse( random(width), random(height),5 );
             if(particlues.length>0){
                 particlues[particlues.length-1 ].target = p;
             }
@@ -160,6 +225,25 @@ let ellipse = new Ellipse;
             }
         
     })
+        sequencer.registerSequence({
+        
+        name : "end",
+        start : 227,
+        onStart : () => {
+            console.log("start-mi2");
+        },
+        stop: 243,
+        onStep : (event)=>{
+            console.log(event);
+            let p = new Ellipse( random(width), random(height),5 );
+            if(particlues.length>0){
+                particlues[particlues.length-1 ].target = p;
+            }
+            particlues.push(p);
+            }
+        
+    })
+
            sequencer.registerSequence({
         
         name : "end2",
@@ -170,7 +254,7 @@ let ellipse = new Ellipse;
         stop: 230,
         onStep : (event)=>{
             console.log(event);
-            let p = new Ellipse( random(width), random(height) );
+            let p = new Ellipse( random(width), random(height),10 );
             if(particlues.length>0){
                 particlues[particlues.length-1 ].target = p;
             }
@@ -181,16 +265,76 @@ let ellipse = new Ellipse;
             sequencer.registerSequence({
         
         name : "end3",
-        start : 210,
+        start : 233,
         onStart : () => {
             console.log("start-mi2");
         },
         stop: 243,
         onStep : (event)=>{
             console.log(event);
-            blinkers.push(new twink(random(width), random(height),20, 10));
+            blinkers.push(new twink(random(width), random(height),35, 5));
             }
     })
+
+            sequencer.registerSequence({
+        
+        name : "close",
+        start : 244,
+        onStart : () => {
+            console.log("start-mi2");
+        },
+        stop: 253,
+        onStep : (event)=>{
+            console.log(event);
+            clings.push( new pupille(0, 0, innerWidth, 350));
+          
+        }
+    })
+    
+
+        sequencer.registerSequence({
+        
+        name : "close",
+        start : 245,
+        onStart : () => {
+            console.log("start-mi2");
+        },
+        stop: 253,
+        onStep : (event)=>{
+            console.log(event);
+            clings.push( new pupille(0, 0, innerWidth, 550));
+          
+        }
+    })
+        sequencer.registerSequence({
+        
+        name : "close",
+        start : 246,
+        onStart : () => {
+            console.log("start-mi2");
+        },
+        stop: 253,
+        onStep : (event)=>{
+            console.log(event);
+            clings.push( new pupille(0, 0, innerWidth, 800));
+           
+        }
+    })
+        sequencer.registerSequence({
+        
+        name : "close",
+        start : 247,
+        onStart : () => {
+            console.log("start-mi2");
+        },
+        stop: 253,
+        onStep : (event)=>{
+            console.log(event);
+            clings.push( new pupille(0, 0, innerWidth, innerHeight));
+           
+        }
+    })
+
 }
     
 
@@ -205,16 +349,18 @@ function draw(){
      for(let blinker of blinkers){
         blinker.draw();
     }
-    
+    for(let cling of clings){
+        cling.draw();
+    }
     
     
 }
 
 class Ellipse{
-    constructor(x, y){
+    constructor(x, y, size){
         this.x = x;
         this.y = y;
-        this.size = 3;
+        this.size = 4;
         this.target;
         this.bulletX = x;
         this.bulletY = y;
@@ -248,7 +394,7 @@ class twink{
         this.speed = speed;
     }
     draw(){
-        stroke(0,128,255);
+        stroke(55,150,255);
         if(this.dir){
             line(this.x-this.len, this.y, this.x + this.len, this.y);    
         }
@@ -265,4 +411,20 @@ class twink{
     }
 }
 
+class pupille{
+    constructor(x, y, width, height){
+        this.x = x;
+        this.y = y;
+        this.width = width;
+        this.height = height;
+        this.color = color(0);
+
+    
+    }
+    draw(){
+        fill(this.color);
+        stroke(0);
+        rect(this.x, this.y, this.width, this.height);
+        }
+    }
 
