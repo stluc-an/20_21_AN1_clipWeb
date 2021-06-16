@@ -15,7 +15,7 @@ function setup(){
         steps: [1,1+1/4, 1+2/4,1+3/4],
       onStep : (event) => {
         console.log (event);
-        view.speed += 0.1
+        view.speed += 0.05
       }
     })
     sequencer.registerSequence({
@@ -32,7 +32,7 @@ function setup(){
     })
   sequencer.registerSequence({
       name : "Drop",
-      start : 144,
+      start : 70,
       onStart : () => {console.log ("start");},
       stop : 209 ,
       onStop : () => {console.log ("stop");},
@@ -46,7 +46,7 @@ function setup(){
       start : 209,
       onStart : () => {console.log ("start");
 },
-      stop : 287 ,
+      stop : 286 ,
       onStop : () => {console.log ("stop");},
         steps: [1,1+1/4, 1+2/4,1+3/4],
       onStep : (event) => {
@@ -57,25 +57,26 @@ function setup(){
       }})
   sequencer.registerSequence({
       name : "Small Breaker",
-      start : 287,
+      start : 286,
       onStart : () => {console.log ("start");
        },
-      stop : 383,
+      stop : 381,
       onStop : () => {console.log ("stop");},
         steps: [1,1+1/4, 1+2/4,1+3/4],
       onStep : (event) => {
         console.log (event);
-        view.speed += 0.1
+        view.speed += 0.04
         view.color.setRed(166);
         view.bg.setRed(0);
         view.bg.setGreen(0);
         view.bg.setBlue(0);
-                view.nextColor();
+                  view.speed += 0.03
+
 
       }})
   sequencer.registerSequence({
       name : "Last part",
-      start : 383,
+      start : 381,
       onStart : () => {console.log ("start");},
       stop : 462,
       onStop : () => {console.log ("stop");},
@@ -83,8 +84,7 @@ function setup(){
       onStep : (event) => {
         console.log (event);
         view.speed += 0.1
-
-                        view.nextColor();
+        view.nextColor();
 
       }})
   sequencer.registerSequence({
@@ -111,10 +111,6 @@ function setup(){
       onStep : (event) => {
         console.log (event);
                 view.speed += 0.1
-
-        
-                view.nextColor();
-
       }})
   sequencer.registerSequence({
       name : "Outro",
@@ -148,7 +144,7 @@ function setup(){
       start : 950,
       onStart : () => {console.log ("start");
      },
-      stop : 999,
+      stop : 998,
       onStop : () => {console.log ("stop");},
         steps: [1, 1+1/4, 1+3/4,1+2/4],
       onStep : (event) => {
@@ -160,7 +156,7 @@ function setup(){
       }})
         sequencer.registerSequence({
       name : "Part5",
-      start : 999,
+      start : 998,
       onStart : () => {console.log ("start");
   },
       stop : 1105,
@@ -168,16 +164,14 @@ function setup(){
         steps: [1,1+1/4, 1+2/4,1+3/4],
       onStep : (event) => {
         console.log (event);
-        view.speed += 0.1;
-        view.nextColor();
-      
+        view.speed += 0.02;      
       }})
           sequencer.registerSequence({
       name : "Part6",
       start : 1105,
       onStart : () => {console.log ("start");
       },
-      stop : 1414,
+      stop : 1413,
       onStop : () => {console.log ("stop");},
         steps: [1,1+1/4, 1+2/4,1+3/4],
       onStep : (event) => {
@@ -188,7 +182,7 @@ function setup(){
       }})
       sequencer.registerSequence({
       name : "Part7",
-      start : 1414,
+      start : 1413,
       onStart : () => {console.log ("start");
        },
       stop : 1482,
@@ -196,8 +190,7 @@ function setup(){
         steps: [1,1+1/4, 1+2/4,1+3/4],
       onStep : (event) => {
         console.log (event);
-        view.speed += 0.1
-                view.nextColor();
+        view.speed += 0.05;
 
       }})
       sequencer.registerSequence({
@@ -205,14 +198,12 @@ function setup(){
       start : 1482,
       onStart : () => {console.log ("start");
 },
-      stop : 1635,
+      stop : 1639,
       onStop : () => {console.log ("stop");},
         steps: [1,1+1/4, 1+2/4,1+3/4],
       onStep : (event) => {
         console.log (event);
-        view.speed += 0.04;
-              view.nextColor();
-
+        view.speed += 0.03;
       }})
       view = new Noise2D();
 }
