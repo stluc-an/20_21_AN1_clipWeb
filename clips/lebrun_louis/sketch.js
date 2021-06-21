@@ -19,6 +19,7 @@ function setup() {
   view= new Noir();
   sequencer = new Sequencer(audioPath,128, false);
 
+
   sequencer.registerSequence({
       name : "Noir",
       start : 0,
@@ -219,6 +220,7 @@ class Line1{
       background(0,0,0);
       noFill();
       noStroke()
+      colorMode(HSB,255,255,255,255);
        let hu = noise(xoff)*random(500); 
         stroke(hu, 512, 256, 500);
       strokeWeight(random(10));
@@ -321,7 +323,7 @@ class Line1{
     draw(){
         background(0,0,0);
         noFill();
-        colorMode (RGB,255,255,255);
+        colorMode (HSB,255,255,255);
         stroke(hu, 255, 255, 255);
             strokeWeight(15,1000);
      stroke(255, 50, 100);
